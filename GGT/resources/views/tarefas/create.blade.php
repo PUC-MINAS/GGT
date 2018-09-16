@@ -26,14 +26,36 @@
 		<div class="form-group">
 			<label>Responsável pela tarefa</label>
 			<select class="form-control" name="responsavel" id="responsavel">
+				<option></option>
 				<option value="1">Subordinado1</option>
-				<option value="2">Subordinado1</option>
-				<option value="3">Subordinado1</option>
-				<option value="4">Subordinado1</option>
-				<option value="5">Subordinado1</option>
+				<option value="2">Subordinado2</option>
+				<option value="3">Subordinado3</option>
+				<option value="4">Subordinado4</option>
+				<option value="5">Subordinado5</option>
 			</select>
 		</div>
+		<div class="form-check">
+			<input type="checkbox" class="form-check-input" name="todos" id="checkTodos">
+			<label class="form-check-label">
+				<input type="checkbox" class="form-check-input" name="todos" id="checkTodos">
+				<span class="form-check-sign"></span>
+				Selecionar todos
+			</label>
+		</div>
 		<button type="submit" class="btn btn-success btn-fill">Criar</button>
-		<a href="{{url('tarefas')}}" class="btn btn-warning btn-fill">Cancelar</a>
+		<a href="{{url('tarefas')}}" class="btn btn-danger btn-fill">Cancelar</a>
 	</form>
+
+
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+	$("#checkTodos").click(function	() {
+		console.log('clicado');
+		if (this.val() == true) {
+			$("#responsavel").attr("disabled");
+		}
+	});
+</script>
 @endsection
