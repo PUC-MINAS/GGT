@@ -23,3 +23,5 @@ Route::get('/index', function () {
 Route::get('/tarefas', 'TarefasController@index');
 
 Route::get('/tarefas/criar', 'TarefasController@create');
+
+Route::post('/tarefas/store', 'TarefasController@store');

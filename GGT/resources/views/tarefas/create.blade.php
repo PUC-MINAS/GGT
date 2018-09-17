@@ -10,18 +10,29 @@
 	  </ol>
 	</nav>
 
-	<form>
+	<form method="POST" action="{{url('tarefas/store')}}">
 		<div class="form-group">
-			<label for="nome">Nome da tarefa</label>
-			<input type="text" name="nome" class="form-control" id="nome">
+			<label for="nome">Título</label>
+			<input type="text" name="titulo" class="form-control" id="titulo">
 		</div>
 		<div class="form-group">
 			<label for="descricao">Descrição</label>
 			<textarea class="form-control" rows="6" name="descricao" id="descricao"></textarea>
 		</div>
 		<div class="form-group">
-			<label for="pontuacao">Pontuação</label>
-			<input type="number" name="pontuacao" id="pontuacao" class="form-control">
+			<label for="recompensa">Recompensa em FUJcoins</label>
+			<input type="number" name="recompensa" id="recompensa" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Setor</label>
+			<select class="form-control" name="setor" id="setor">[
+				<option></option>
+				<option value="1">Setor1</option>
+				<option value="2">Setor2</option>
+				<option value="3">Setor3</option>
+				<option value="4">Setor4</option>
+				<option value="5">Setor5</option>
+			</select>
 		</div>
 		<div class="form-group">
 			<label>Responsável pela tarefa</label>
