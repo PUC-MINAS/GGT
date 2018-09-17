@@ -33,18 +33,20 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="index">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
                         </a>
                     </li>
-                    <!--<li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
+                    <li>
+                        <a class="nav-link" href="{{url('tarefas')}}">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Tarefas</p>
                         </a>
                     </li>
+                    
+                    <!--
                     <li>
                         <a class="nav-link" href="./table.html">
                             <i class="nc-icon nc-notes"></i>
@@ -88,7 +90,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class=" container-fluid  ">
-                    <a class="navbar-brand" href="#pablo"> @yield('title') </a>
+                    <a class="navbar-brand" href=""> @yield('title') </a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -96,12 +98,12 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
+                            <!--<li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-chart-pie-35"></i>
                                     <span class="d-lg-none">Home</span>
                                 </a>
-                            </li>
+                            </li>-->
                             <!--<li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-planet"></i>
@@ -161,13 +163,14 @@
                 <div class="container">
                     <nav>
                         <ul class="footer-menu">
+                            <!--
                             <li>
                                 <a href="index">
                                     Home
                                 </a>
                             </li>
                             
-                            <!--
+                            
                             <li>
                                 <a href="#">
                                     Company
