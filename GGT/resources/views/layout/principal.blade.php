@@ -33,18 +33,20 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="index">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
                         </a>
                     </li>
-                    <!--<li>
-                        <a class="nav-link" href="./user.html">
+                    <li>
+                        <a class="nav-link" href="{{url('tarefas')}}">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
+                            <p>Tarefas</p>
                         </a>
                     </li>
+                    
+                    <!--
                     <li>
                         <a class="nav-link" href="./table.html">
                             <i class="nc-icon nc-notes"></i>
