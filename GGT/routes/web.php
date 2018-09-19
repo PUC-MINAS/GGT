@@ -25,3 +25,7 @@ Route::get('/tarefas', 'TarefasController@index');
 Route::get('/tarefas/criar', 'TarefasController@create');
 
 Route::post('/tarefas/store', 'TarefasController@store');
+
+Route::get('/cadastro', 'CadastroController@index');
+
+Route::get('/cadastro/registro-membro', 'CadastroController@gravaRegistro');
