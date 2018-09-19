@@ -16,7 +16,7 @@
 
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{URL::asset('assets/css/light-bootstrap-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
-    
+
 </head>
 <body>
 	<div class="wrapper">
@@ -28,13 +28,13 @@
     -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
+                    <a class="simple-text">
                         GGT
                     </a>
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index">
+                        <a class="nav-link" href="{{url('index')}}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
                         </a>
@@ -45,7 +45,7 @@
                             <p>Tarefas</p>
                         </a>
                     </li>
-                    
+
                     <!--
                     <li>
                         <a class="nav-link" href="./table.html">
@@ -155,9 +155,9 @@
             </nav>
             <!-- End Navbar -->
             <div class="content">
-                
+
                     @yield('conteudo')
-                                                
+
             </div>
             <footer class="footer">
                 <div class="container">
@@ -169,8 +169,8 @@
                                     Home
                                 </a>
                             </li>
-                            
-                            
+
+
                             <li>
                                 <a href="#">
                                     Company
