@@ -16,11 +16,11 @@
 
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{URL::asset('assets/css/light-bootstrap-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
-    
+
 </head>
 <body>
 	<div class="wrapper">
-        <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-4.jpg">
+        <div class="sidebar" data-color="blue" data-image="../assets/img/sidebar-4.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -28,23 +28,25 @@
     -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
+                    <a class="simple-text">
                         GGT
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('index')}}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
                         </a>
                     </li>
-                    <!--<li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
+                    <li>
+                        <a class="nav-link" href="{{url('tarefas')}}">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Tarefas</p>
                         </a>
                     </li>
+
+                    <!--
                     <li>
                         <a class="nav-link" href="./table.html">
                             <i class="nc-icon nc-notes"></i>
@@ -88,7 +90,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class=" container-fluid  ">
-                    <a class="navbar-brand" href="#pablo"> @yield('title') </a>
+                    <a class="navbar-brand" href=""> @yield('title') </a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -96,12 +98,12 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
+                            <!--<li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-chart-pie-35"></i>
                                     <span class="d-lg-none">Home</span>
                                 </a>
-                            </li>
+                            </li>-->
                             <!--<li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-planet"></i>
@@ -153,21 +155,22 @@
             </nav>
             <!-- End Navbar -->
             <div class="content">
-                
+
                     @yield('conteudo')
-                                                
+
             </div>
             <footer class="footer">
                 <div class="container">
                     <nav>
                         <ul class="footer-menu">
+                            <!--
                             <li>
                                 <a href="index">
                                     Home
                                 </a>
                             </li>
-                            
-                            <!--
+
+
                             <li>
                                 <a href="#">
                                     Company
@@ -209,12 +212,15 @@
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="{{URL::asset('assets/js/plugins/bootstrap-switch.js')}}"></script>
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
 <!--  Chartist Plugin  -->
 <script src="{{URL::asset('assets/js/plugins/chartist.min.js')}}"></script>
 <!--  Notifications Plugin    -->
 <script src="{{URL::asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="{{URL::asset('assets/js/light-bootstrap-dashboard.js?v=2.0.1')}}" type="text/javascript"></script>
+
+<!--scripts adicionais -->
+@yield('scripts')
 
 </html>
