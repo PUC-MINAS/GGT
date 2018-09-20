@@ -51,6 +51,12 @@
                             <p>Cadastrar Membro</p>
                         </a>
                     </li>
+			<li>
+                        <a class="nav-link" href="{{url('premiacao')}}">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Premios</p>
+                        </a>
+                    </li>
 
                     <!--
                     <li>
