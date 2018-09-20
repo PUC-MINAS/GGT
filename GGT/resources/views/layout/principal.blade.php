@@ -28,7 +28,7 @@
     -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
+                    <a href="" class="simple-text">
                         GGT
                     </a>
                 </div>
@@ -37,6 +37,13 @@
                         <a class="nav-link" href="index">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
+                        </a>
+                    </li>
+		    </li>
+			<li>
+                        <a class="nav-link" href="{{url('login')}}">
+                            <i class="nc-icon nc-paper-2"></i>
+                            <p>Login</p>
                         </a>
                     </li>
                     <li>
@@ -57,6 +64,7 @@
                             <p>Premios</p>
                         </a>
                     </li>
+		    
 
                     <!--
                     <li>

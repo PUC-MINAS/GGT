@@ -34,3 +34,5 @@ Route::post('/premiacao/store', 'PremiacaoController@store');
 
 Route::get('/cadastro', 'CadastroController@index');
 Route::post('/cadastro/registro-membro', 'CadastroController@gravaRegistro');
+
+Auth::routes();
