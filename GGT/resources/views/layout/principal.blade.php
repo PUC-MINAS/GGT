@@ -55,7 +55,7 @@
                     <li>
                         <a class="nav-link" href="{{url('cadastro')}}">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Cadastrar Membro</p>
+                            <p>Usuários</p>
                         </a>
                     </li>
 			<li>
@@ -64,7 +64,7 @@
                             <p>Premios</p>
                         </a>
                     </li>
-		    
+
 
                     <!--
                     <li>
