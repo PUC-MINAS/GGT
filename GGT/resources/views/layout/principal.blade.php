@@ -29,7 +29,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="" class="simple-text">
-                        GGT
+                        FUJ
                     </a>
                 </div>
                 <ul class="nav">
