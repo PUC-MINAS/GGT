@@ -6,7 +6,7 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
-				<li class="breadcrumb-item"><a href="{{url('tarefas')}}">Premiação</a></li>
+				<li class="breadcrumb-item"><a href="{{url('/premiacao')}}">Premiação</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Criar</li>
 			</ol>
 		</nav>
@@ -35,8 +35,8 @@
 					</div>
 
 					<div class="form-group">
-						<label>Data Limite de inscrição</label>
-						<input type="date" name="data_expirar" id="data_expirar" class="form-control" placeholder="AAAA-MM-DD">
+						<label>Prazo de inscrição</label>
+						<input name="data_expirar" id="data_expirar" class="form-control" placeholder="AAAA-MM-DD">
 					</div>
 					
 					<button type="submit" class="btn btn-success btn-fill">Criar</button>
@@ -47,9 +47,5 @@
 		</div>	
 	</div>
 </form>
-
-	<script>
-		
-	</script>
-
 @endsection
+
