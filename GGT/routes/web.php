@@ -37,14 +37,12 @@ Route::get('/premiacao/criar', 'PremiacaoController@create');
 
 Route::post('/premiacao/store', 'PremiacaoController@store');
 
-<<<<<<< Updated upstream
 Route::resource('cadastro', 'UsuariosController');
-=======
+
 Route::get('/premiacao/delete/{id}', 'PremiacaoController@delete');
 
 Route::post('/premiacao/update/{id}', 'PremiacaoController@update');
 
 Route::post('/cadastro/registro-membro', 'CadastroController@gravaRegistro');
->>>>>>> Stashed changes
 
 Auth::routes();
