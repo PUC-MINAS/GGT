@@ -48,6 +48,8 @@ class UsuariosController extends Controller
 
     public function destroy($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        $usuario->delete();
+        return redirect()->route('cadastro.index')->with('alert-success','Product hasbeen deleted!');
     }
 }

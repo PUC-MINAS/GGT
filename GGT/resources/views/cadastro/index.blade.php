@@ -9,8 +9,7 @@
 	  </ol>
 	</nav>
 
-    <a href="{{url('cadastro/create')}}" class="btn btn-primary btn-fill">Cadastrar Usuário</a>
-    <a href="{{url('cadastro/show')}}" class="btn btn-primary btn-fill">Visualizar Usuário</a>
+    <a href="{{url('cadastro/create')}}"  class="btn btn-primary btn-fill">Cadastrar Usuário</a>
 
     <div class="table-responsive table-full-width">
         <table class="table table-hover">
@@ -26,9 +25,20 @@
                     <td>{{ $usuario->email}}</td>
                     <td>{{ $usuario->cargo}}</td>
                     <td>{{ $usuario->setor}}</td>
+
+                    <td>
+                        <a class="btn btn-small btn-info" href="{{ URL::to('cadastro/' . $usuario->id . '/edit') }}">Editar</a>
+                    </td>
+
+                    <td>
+                        <form action="{{ route('cadastro.destroy', $usuario->id) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </form>
+                    </td>
                 </tr>
             @empty
-                <p>Nenhum usuário cadastrado!</p>
             @endforelse
         </table>
     </div>
