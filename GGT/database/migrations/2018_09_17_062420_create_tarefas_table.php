@@ -17,9 +17,9 @@ class CreateTarefasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->mediumText('descricao');
-            $table->integer('recompensa');
             $table->date('data_limite');
-            $table->date('data_entrega')->nullable();
+            $table->date('data_entrega')->nullable();            
+            $table->integer('recompensa');
             
         });
     }

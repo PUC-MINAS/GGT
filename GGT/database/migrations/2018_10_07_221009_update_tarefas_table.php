@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class UpdateTarefasTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('tarefas', function (Blueprint $table) {
+            $table->integer('users_id_criador');
+            $table->integer('users_id_responsavel');
+            $table->integer('status_tarefas_id');
+            
+            $table->foreign('users_id_criador')
+                    ->references('id')
+                    ->on('users');
+            $table->foreign('users_id_responsavel')
+                    ->references('id')
+                    ->on('users');
+            $table->foreign('status_tarefas_id')
+                    ->references('id')
+                    ->on('status_tarefas');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+}
