@@ -20,6 +20,9 @@ class CreateTarefasTable extends Migration
             $table->date('data_limite');
             $table->date('data_entrega')->nullable();            
             $table->integer('recompensa');
+            $table->integer('users_id_criador');
+            $table->integer('users_id_responsavel');
+            $table->integer('status_tarefas_id');
             
         });
     }

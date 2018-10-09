@@ -18,8 +18,8 @@ class CreatePremiacoesTable extends Migration
             $table->integer("valor_pago");
             $table->integer('premio_id');
             $table->integer('user_id');
-            $table->foreign('premio_id')->references('id')->on('premios');
-            $table->foreign('user_id')->references('users')->on('users');
+            //$table->foreign('premio_id')->references('id')->on('premios');
+            //$table->foreign('user_id')->references('users')->on('users');
         });
     }
 

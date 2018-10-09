@@ -14,11 +14,9 @@ class UpdateTarefasTable extends Migration
     public function up()
     {
         Schema::table('tarefas', function (Blueprint $table) {
-            $table->integer('users_id_criador');
-            $table->integer('users_id_responsavel');
-            $table->integer('status_tarefas_id');
             
-            $table->foreign('users_id_criador')
+            
+            /*$table->foreign('users_id_criador')
                     ->references('id')
                     ->on('users');
             $table->foreign('users_id_responsavel')
@@ -26,7 +24,7 @@ class UpdateTarefasTable extends Migration
                     ->on('users');
             $table->foreign('status_tarefas_id')
                     ->references('id')
-                    ->on('status_tarefas');
+                    ->on('status_tarefas');*/
         });
     }
 

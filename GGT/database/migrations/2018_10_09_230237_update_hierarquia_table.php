@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUsersTable extends Migration
+class UpdateHierarquiaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('users', function (Blueprint $table){
-            
-           // $table->foreign('setores_id')->references('id')->on('setores');
-            //$table->foreign('tipos_usuarios_id')->references('id')->on('tipos_usuarios');
+        Schema::table('hierarquias', function(Blueprint $table) {
+            $table->foreign("users_id_superior")
+                  ->references('id')
+                  ->on('users');
+            $table->foreign("users_id_subordinado")
+                    ->references('id')
+                    ->on('users');
         });
+        
     }
 
     /**
