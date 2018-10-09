@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUsersTable extends Migration
+class UpdatePremiacoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('users', function (Blueprint $table){
-            
-           // $table->foreign('setores_id')->references('id')->on('setores');
-            //$table->foreign('tipos_usuarios_id')->references('id')->on('tipos_usuarios');
+        Schema::table('premiacoes', function (Blueprint $table) {
+            $table->foreign('premio_id')->references('id')->on('premios');
+            $table->foreign('user_id')->references('users')->on('users');
         });
+        
     }
 
     /**

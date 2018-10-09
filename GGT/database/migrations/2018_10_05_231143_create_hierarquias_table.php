@@ -16,12 +16,12 @@ class CreateHierarquiasTable extends Migration
         Schema::create('hierarquias', function (Blueprint $table) {
             $table->integer('users_id_superior');
             $table->integer('users_id_subordinado');
-            $table->foreign("users_id_superior")
-                    ->references('id')
-                    ->on('users');
-            $table->foreign("users_id_subordinado")
-                    ->references('id')
-                    ->on('users');
+            //$table->foreign("users_id_superior")
+            //        ->references('id')
+            //        ->on('users');
+            //$table->foreign("users_id_subordinado")
+            //        ->references('id')
+            //        ->on('users');
         });
     }
 

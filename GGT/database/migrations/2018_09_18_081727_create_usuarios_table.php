@@ -19,6 +19,8 @@ class CreateUsuariosTable extends Migration
             $table->string('senha');
             $table->string('nome');
             $table->integer('pontos')->nullabel()->default(0);
+            $table->integer('setores_id');
+            $table->integer('tipos_usuarios_id');
             $table->rememberToken();
         });
     }
