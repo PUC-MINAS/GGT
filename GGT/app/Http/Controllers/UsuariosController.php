@@ -25,8 +25,8 @@ class UsuariosController extends Controller
 	    $user->nome = $request->input('nome-completo');
 	    $user->email = $request->input('email');
 	    $user->senha = $request->input('senha');
-	    $user->cargo = $request->input('cargo');
-	    $user->setor = $request->input('diretoria');
+	    $user->tipos_usuarios_id = $request->input('cargo');
+        $user->setores_id = $request->input('diretoria');
 	    $user->save();
 	    return view('index');
     }

@@ -15,9 +15,9 @@ class UpdateUsersTable extends Migration
     {
         //
         Schema::table('users', function (Blueprint $table){
-            
-           // $table->foreign('setores_id')->references('id')->on('setores');
-            //$table->foreign('tipos_usuarios_id')->references('id')->on('tipos_usuarios');
+
+           $table->foreign('setores_id')->references('id')->on('setores');
+           $table->foreign('tipos_usuarios_id')->references('id')->on('tipos_usuarios');
         });
     }
 
