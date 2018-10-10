@@ -14,8 +14,8 @@ class CreateHierarquiasTable extends Migration
     public function up()
     {
         Schema::create('hierarquias', function (Blueprint $table) {
-            $table->integer('users_id_superior');
-            $table->integer('users_id_subordinado');
+            $table->integer('users_id_superior')->unsigned();
+            $table->integer('users_id_subordinado')->unsigned();
             //$table->foreign("users_id_superior")
             //        ->references('id')
             //        ->on('users');
