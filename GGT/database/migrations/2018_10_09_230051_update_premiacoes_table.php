@@ -15,9 +15,9 @@ class UpdatePremiacoesTable extends Migration
     {
         Schema::table('premiacoes', function (Blueprint $table) {
             $table->foreign('premio_id')->references('id')->on('premios');
-            $table->foreign('user_id')->references('users')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
-        
+
     }
 
     /**

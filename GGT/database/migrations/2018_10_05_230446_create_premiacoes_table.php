@@ -16,8 +16,8 @@ class CreatePremiacoesTable extends Migration
         Schema::create('premiacoes', function (Blueprint $table) {
             $table->date("data_resgate");
             $table->integer("valor_pago");
-            $table->integer('premio_id');
-            $table->integer('user_id');
+            $table->integer('premio_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             //$table->foreign('premio_id')->references('id')->on('premios');
             //$table->foreign('user_id')->references('users')->on('users');
         });
