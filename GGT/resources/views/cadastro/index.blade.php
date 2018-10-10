@@ -23,8 +23,8 @@
                 <tr>
                     <td>{{ $usuario->nome }}</td>
                     <td>{{ $usuario->email}}</td>
-                    <td>{{ $usuario->cargo}}</td>
-                    <td>{{ $usuario->setor}}</td>
+                    <td>{{ $usuario->tipo_usuario['titulo']}}</td>
+                    <td>{{ $usuario->setor['titulo']}}</td>
 
                     <td>
                         <a class="btn btn-small btn-info" href="{{ URL::to('cadastro/' . $usuario->id . '/edit') }}">Editar</a>
