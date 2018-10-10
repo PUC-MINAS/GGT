@@ -16,30 +16,13 @@ class PremiacaoController extends Controller
 
     public function create()
     {
-        return view('premiacao.criar');
+        return view('premiacao.DiretorExecutivo.index');
     }
 
    
     public function store(Request $request)
     {
-        $premiacao = new \App\Premio();
-
-        $premiacao->titulo = $request->input('titulo');
-    	$premiacao->descricao = $request->input('descricao');
-        $premiacao->valor = $request->input('valor');
-        $premiacao->vagas = $request->input('qtdVagas');
-        $premiacao->data_expirar = DateTime::createFromFormat('Y-m-d H:i:s', $request->input('data_expirar') . ' 23:59:59');
-    	
-    	
-        $insert = $premiacao->save();
-       
-         if($insert){
-            $premios = \App\Premio::all();
-             return view('premiacao.vizualisar')->with('premios',$premios);
-         }
-         else{
-            return 'Não foi possivel inserir';
-         }
+        return 'ok';
     }
 
    
@@ -47,35 +30,16 @@ class PremiacaoController extends Controller
    
     public function show() 
     {
-        $premios = \App\Premio::all();
-        return view('premiacao.vizualisar')->with('premios',$premios);
+        return 'ok';
     }
     
     public function update(Request $request, $id)
     {
-        $premio = \App\Premio::find($id);
-        $premio->titulo = $request->get('titulo');
-    	$premio->descricao = $request->get('descricao');
-        $premio->valor = $request->get('valor');
-        $premio->vagas = $request->get('qtdVagas');
-        $premio->data_expirar = DateTime::createFromFormat('Y-m-d H:i:s', $request->get('data_expirar') . ' 23:59:59');
-        
-        $insert = $premio->save();
-       
-        if($insert){
-           $premios = \App\Premio::all();
-            return view('premiacao.vizualisar')->with('premios',$premios);
-        }
-        else{
-            return 'Não foi possivel atualizar';
-        }
+        return 'ok';
     }
 
     public function delete($id){
-        $premio = \App\Premio::find($id);
-        $premio->delete();
-        $premios = \App\Premio::all();
-        return view('premiacao.vizualisar')->with('premios',$premios);
+        return 'ok';
     }
     
     public function destroy(premiacao $premiacao)

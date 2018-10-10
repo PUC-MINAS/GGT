@@ -8,8 +8,6 @@
        		<li class="breadcrumb-item active" aria-current="page">Premiações</li>
 	  </ol>
 	</nav>
-	<a href="{{url('premiacao/show')}}" class="btn btn-primary btn-fill">Vizualizar Premiação</a>
-
-	
+	<p>ok</p>
 	
 @endsection

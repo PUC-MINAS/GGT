@@ -59,7 +59,7 @@
                         </a>
                     </li>
 			<li>
-                        <a class="nav-link" href="{{url('premiacao')}}">
+                        <a class="nav-link" href="{{url('premio')}}">
                             <i class="nc-icon nc-notes"></i>
                             <p>Premios</p>
                         </a>
