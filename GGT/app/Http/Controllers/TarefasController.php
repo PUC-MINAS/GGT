@@ -64,6 +64,16 @@ class TarefasController extends Controller
 	}
 	
 	public function update(Request $request) {
+		
+		$tarefa = Tarefa::find($request->input('id'));
+		$tarefa->titulo = $request->input('titulo');
+		$tarefa->descricao = $request->input('descricao');
+		$tarefa->recompensa = $request->input('recompensa');
+		$tarefa->data_limite = date($request->input('data_limite'));
+
+		//dd($tarefa);
+
+		$tarefa->save();
 
 		return redirect('/tarefas');
 	}

@@ -34,7 +34,7 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index">
+                        <a class="nav-link" href="{{url('/')}}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
                         </a>

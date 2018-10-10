@@ -37,9 +37,9 @@
 								<button class="btn btn-primary btn-fill btn-xs">
 									<i class="nc-icon nc-tag-content" title="Detalhes"></i>
 								</button>
-								<button  class="btn btn-warning btn-fill btn-xs" onclick="alert('teste')">
+								<a href="{{url('/tarefas/alterar/'.$t->id)}}" class="btn btn-warning btn-fill btn-xs">
 									<i class="nc-icon nc-settings-tool-66" title="Editar"></i>
-								</button>
+								</a>
 								<button class="btn btn-danger btn-fill btn-xs">
 									<i class="nc-icon nc-simple-remove" title="Deletar"></i>
 								</button>
