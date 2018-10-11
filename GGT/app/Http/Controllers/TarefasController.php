@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tarefa;
 use App\StatusTarefa;
+use App\Setor;
 use App\Usuario;
 use Date;
 
@@ -22,7 +23,11 @@ class TarefasController extends Controller
     }
 
     public function create(){
-    	return view('tarefas.create');
+
+		$setores = Setor::all();
+		$subordinados = Usuario::all();
+
+    	return view('tarefas.create')->with('subordinados', $subordinados)->with('setores', $setores);
 	}
 	
 	public function alterar($id){
@@ -30,8 +35,10 @@ class TarefasController extends Controller
 		$tarefa->criador = Usuario::find($tarefa->users_id_criador);
 		$tarefa->responsavel = Usuario::find($tarefa->users_id_responsavel);
 		$tarefa->status = StatusTarefa::find($tarefa->status_tarefas_id);
+
+		$subordinados = Usuario::all();
 		
-		return view('tarefas.alterar')->with('tarefa', $tarefa);
+		return view('tarefas.alterar')->with('tarefa', $tarefa)->with('subordinados', $subordinados);
 	}
 
     public function store(Request $request){
@@ -47,13 +54,27 @@ class TarefasController extends Controller
 		$responsavel = Usuario::find(2);
 		$tarefa->users_id_criador = $criador->id;
 		$tarefa->users_id_responsavel = $responsavel->id;
+		//dd($status);
 		$tarefa->status_tarefas_id = $status->id;
 		//dd($tarefa);
 
     	$tarefa->save();
 
-		//return view('tarefas.index');
-		//return Redirect::to('tarefas');
 		return redirect('/tarefas');
-    }
+	}
+	
+	public function update(Request $request) {
+		
+		$tarefa = Tarefa::find($request->input('id'));
+		$tarefa->titulo = $request->input('titulo');
+		$tarefa->descricao = $request->input('descricao');
+		$tarefa->recompensa = $request->input('recompensa');
+		$tarefa->data_limite = date($request->input('data_limite'));
+
+		//dd($tarefa);
+
+		$tarefa->save();
+
+		return redirect('/tarefas');
+	}
 }

@@ -40,24 +40,28 @@
 				
 				<div class="form-group">
 					<label>Setor</label>
-					<select class="form-control" name="setor" id="setor">[
+					<select class="form-control" name="setor" id="setor">
 						<option></option>
-						<option value="1">Setor1</option>
-						<option value="2">Setor2</option>
+						@foreach($setores as $s)
+						<option value="{{$s->id}}">{{$s->titulo}}</option>
+						@endforeach
+						<!--<option value="2">Setor2</option>
 						<option value="3">Setor3</option>
 						<option value="4">Setor4</option>
-						<option value="5">Setor5</option>
+						<option value="5">Setor5</option>-->
 					</select>
 				</div>
 				<div class="form-group">
 					<label>Responsável pela tarefa</label>
 					<select class="form-control" name="responsavel" id="responsavel">
 						<option></option>
-						<option value="1">Subordinado1</option>
-						<option value="2">Subordinado2</option>
+						@foreach($subordinados as $s)
+						<option value="{{$s->id}}">{{$s->nome}}</option>
+						@endforeach
+						<!--<option value="2">Subordinado2</option>
 						<option value="3">Subordinado3</option>
 						<option value="4">Subordinado4</option>
-						<option value="5">Subordinado5</option>
+						<option value="5">Subordinado5</option>-->
 					</select>
 				</div>
 				<div class="form-check">

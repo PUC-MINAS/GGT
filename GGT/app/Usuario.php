@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     protected $table = 'users';
+
     public $timestamps = false;
 
     public function setor (){
@@ -16,4 +17,5 @@ class Usuario extends Model
     public function tipo_usuario (){
         return $this->belongsTo('App\TiposUsuarios', 'tipos_usuarios_id');
     }
+
 }

@@ -8,4 +8,6 @@ class StatusTarefa extends Model
 {
     //
     protected $table = 'status_tarefas';
+
+    public $timestamps = false;
 }

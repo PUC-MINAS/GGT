@@ -18,6 +18,7 @@
 		</div>
 		<div class="card-body">
             <form method="POST" action="{{url('tarefas/update')}}">
+				<input type="hidden" name="id" value="{{$tarefa->id}}">
                 <div class="form-group">
 					<label for="nome">Título</label>
 					<input type="text" name="titulo" class="form-control" id="titulo" value='{{$tarefa->titulo}}'>
@@ -32,8 +33,25 @@
 				</div>
 
 				<div class="form-group">
-					<label>Data para entrega</label>
+					<label for="data_limite">Data para entrega</label>
 					<input type="date" name="data_limite" id="data_limite" class="form-control" value="{{$tarefa->data_limite}}">
+				</div>
+				<div class="form-group">
+					<label for="">Responsavel</label>
+					<select class="form-control" name="responsavel" id="responsavel">
+						<!--<option value="{{$tarefa->responsavel->id}}" selected<>{{$tarefa->responsavel->nome}}</option>-->
+						@foreach($subordinados as $s)
+							@if($s->id == $tarefa->responsavel->id)
+								<option value="{{$s->id}}" selected>{{$s->nome}}</option>
+							@else
+								<option value="{{$s->id}}">{{$s->nome}}</option>
+							@endif
+						@endforeach
+						<!--<option value="2">Subordinado2</option>
+						<option value="3">Subordinado3</option>
+						<option value="4">Subordinado4</option>
+						<option value="5">Subordinado5</option>-->
+					</select>
 				</div>
                 <button type="submit" class="btn btn-success btn-fill">Salvar Alterações</button>
 				<a href="{{url('tarefas')}}" class="btn btn-danger btn-fill">Cancelar</a>

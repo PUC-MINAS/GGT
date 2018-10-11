@@ -34,11 +34,14 @@
 							<td>{{$t->data_limite}}</td>
 							<td>{{$t->recompensa}}</td>
 							<td>
-								<button  class="btn btn-warning btn-fill btn-xs" onclick="alert('teste')">
-									<i class="nc-icon nc-settings-tool-66"></i>
+								<button class="btn btn-primary btn-fill btn-xs">
+									<i class="nc-icon nc-tag-content" title="Detalhes"></i>
 								</button>
+								<a href="{{url('/tarefas/alterar/'.$t->id)}}" class="btn btn-warning btn-fill btn-xs">
+									<i class="nc-icon nc-settings-tool-66" title="Editar"></i>
+								</a>
 								<button class="btn btn-danger btn-fill btn-xs">
-									<i class="nc-icon nc-simple-remove"></i>
+									<i class="nc-icon nc-simple-remove" title="Deletar"></i>
 								</button>
 							</td>
 						</tr>

@@ -21,11 +21,11 @@ Route::get('/index', function () {
 
 
 Route::get('/tarefas', 'TarefasController@index');
-
 Route::get('/tarefas/criar', 'TarefasController@create');
 Route::get('/tarefas/alterar/{id}', "TarefasController@alterar");
 
 Route::post('/tarefas/store', 'TarefasController@store');
+Route::post('/tarefas/update', 'TarefasController@update');
 
 Route::get('/cadastro', 'CadastroController@index');
 
