@@ -27,7 +27,7 @@
                     <td>{{ $usuario->setor['titulo']}}</td>
 
                     <td>
-                        <a class="btn btn-small btn-info" href="{{ URL::to('cadastro/' . $usuario->id . '/edit') }}">Editar</a>
+                        <a class="btn btn-info" href="{{ route('cadastro.edit',$usuario->id) }}">Editar</a>
                     </td>
 
                     <td>
