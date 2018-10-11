@@ -39,8 +39,12 @@ Route::get('/premio/diretor', 'PremiacaoController@create');
 
 Route::get('/premio/trainee', 'PremiacaoController@create');
 
-Route::get('/premio/diretorE', 'PremiacaoController@create');
+Route::get('/premio', 'PremiacaoController@index');
 
+Route::post('premio/criar', 'PremiacaoController@store');
 
+Route::get('/premio/delete/{id}', 'PremiacaoController@delete');
+
+Route::post('/premio/update/{id}', 'PremiacaoController@update');
 
 Auth::routes();

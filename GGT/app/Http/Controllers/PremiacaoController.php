@@ -14,20 +14,33 @@ class PremiacaoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    public function index()
     {
-        return view('premiacao.DiretorExecutivo.index');
+        $premios = \App\Premio::all();
+        return view('premiacao.DiretorExecutivo.index')->with('premios',$premios);
     }
 
    
     public function store(Request $request)
     {
-        return 'ok';
+        $premiacao = new \App\Premio();
+     
+        $premiacao->titulo = $request->input('titulo');
+    	$premiacao->descricao = $request->input('descricao');
+        $premiacao->valor = $request->input('valor');
+        $premiacao->limite_vagas = $request->input('qtdVagas');
+        $premiacao->data_limite = date($request->input('data_expirar'));
+        $insert = $premiacao->save();
+
+         if($insert){
+             return redirect('/premio');
+         }
+         else{
+            return 'Não foi possivel inserir';
+         }
+        return $data;
     }
 
-   
-
-   
     public function show() 
     {
         return 'ok';
@@ -35,15 +48,28 @@ class PremiacaoController extends Controller
     
     public function update(Request $request, $id)
     {
-        return 'ok';
+        $premio = \App\Premio::find($id);
+        $premio->titulo = $request->input('titulo');
+    	$premio->descricao = $request->input('descricao');
+        $premio->valor = $request->input('valor');
+        $premio->limite_vagas = $request->input('qtdVagas');
+        $premio->data_limite = date($request->input('data_expirar'));
+            
+        $insert = $premio->save();
+
+       
+        if($insert){
+           return redirect('/premio');
+        }
+        else{
+            return 'Não foi possivel atualizar';
+        }
     }
 
     public function delete($id){
-        return 'ok';
+        $premio = \App\Premio::find($id);
+        $premio->delete();
+        return redirect('/premio');
     }
     
-    public function destroy(premiacao $premiacao)
-    {
-        return 'ok';
-    }
 }
