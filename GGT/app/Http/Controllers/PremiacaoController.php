@@ -29,6 +29,7 @@ class PremiacaoController extends Controller
     	$premiacao->descricao = $request->input('descricao');
         $premiacao->valor = $request->input('valor');
         $premiacao->limite_vagas = $request->input('qtdVagas');
+
         $premiacao->data_limite = date($request->input('data_expirar'));
         $insert = $premiacao->save();
 
@@ -49,12 +50,13 @@ class PremiacaoController extends Controller
     public function update(Request $request, $id)
     {
         $premio = \App\Premio::find($id);
+
         $premio->titulo = $request->input('titulo');
     	$premio->descricao = $request->input('descricao');
         $premio->valor = $request->input('valor');
         $premio->limite_vagas = $request->input('qtdVagas');
         $premio->data_limite = date($request->input('data_expirar'));
-            
+        
         $insert = $premio->save();
 
        

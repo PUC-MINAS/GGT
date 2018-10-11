@@ -36,7 +36,7 @@
 
 					<div class="form-group">
 						<label>Prazo de inscrição</label>
-						<input name="data_expirar" id="data_expirar" class="form-control" placeholder="AAAA-MM-DD">
+						<input type="date" name="data_expirar" id="data_expirar" class="form-control" placeholder="AAAA-MM-DD">
 					</div>
 					
 					<button type="submit" class="btn btn-success btn-fill">Criar</button>
