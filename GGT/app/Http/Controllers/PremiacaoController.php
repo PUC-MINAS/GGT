@@ -27,15 +27,14 @@ class PremiacaoController extends Controller
         $premiacao->titulo = $request->input('titulo');
     	$premiacao->descricao = $request->input('descricao');
         $premiacao->valor = $request->input('valor');
-        $premiacao->vagas = $request->input('qtdVagas');
-        $premiacao->data_expirar = DateTime::createFromFormat('Y-m-d H:i:s', $request->input('data_expirar') . ' 23:59:59');
+        $premiacao->limite_vagas = $request->input('qtdVagas');
+        $premiacao->data_limite = DateTime::createFromFormat('Y-m-d H:i:s', $request->input('data_expirar') . ' 23:59:59');
     	
     	
         $insert = $premiacao->save();
        
          if($insert){
-            $premios = \App\Premio::all();
-             return view('premiacao.vizualisar')->with('premios',$premios);
+             return redirect('/premio');
          }
          else{
             return 'Não foi possivel inserir';
@@ -57,8 +56,8 @@ class PremiacaoController extends Controller
         $premio->titulo = $request->get('titulo');
     	$premio->descricao = $request->get('descricao');
         $premio->valor = $request->get('valor');
-        $premio->vagas = $request->get('qtdVagas');
-        $premio->data_expirar = DateTime::createFromFormat('Y-m-d H:i:s', $request->get('data_expirar') . ' 23:59:59');
+        $premio->limite_vagas = $request->get('qtdVagas');
+        $premio->data_limite = DateTime::createFromFormat('Y-m-d H:i:s', $request->get('data_expirar') . ' 23:59:59');
         
         $insert = $premio->save();
        
