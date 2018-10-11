@@ -28,7 +28,8 @@ class UsuariosController extends Controller
 	    $user->tipos_usuarios_id = $request->input('cargo');
         $user->setores_id = $request->input('diretoria');
 	    $user->save();
-	    return view('index');
+	    return redirect()->route('cadastro.index')
+                        ->with('success','Usuario cadastrado');
     }
 
     public function show($id)
@@ -38,12 +39,17 @@ class UsuariosController extends Controller
 
     public function edit($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        return view('cadastro.editar',compact('usuario'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        $usuario->update($request->all());
+
+        return redirect()->route('cadastro.index')
+                        ->with('success','Usuario alterado com sucesso!');
     }
 
     public function destroy($id)

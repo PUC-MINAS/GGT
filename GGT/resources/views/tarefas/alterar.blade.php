@@ -28,7 +28,7 @@
 					<textarea class="form-control" rows="6" name="descricao" id="descricao">{{$tarefa->descricao}}</textarea>
 				</div>
 				<div class="form-group">
-					<label for="recompensa">Recompensa em FUJcoins</label>
+					<label for="recompensa">Recompensa em FUJ</label>
 					<input type="number" name="recompensa" id="recompensa" class="form-control" value="{{$tarefa->recompensa}}">
 				</div>
 

@@ -1,4 +1,4 @@
-@extends('layout.principal')
+@extends('index')
 @section('title', 'Premiação')
 
 @section('conteudo')
@@ -31,6 +31,7 @@
                                 <td ><p>{{$p->descricao}}</p></td>
                                 <td >{{$p->valor}}</td>
                                 <td >{{$p->data_limite}}</td>
+                                <td> <td><a href="/premio/trocar/{{$p->id}}" class="btn btn-primary btn-fill">Torcar</a></td></td>
                             </tr>
                         </thead>
                     @endforeach

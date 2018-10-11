@@ -14,56 +14,54 @@ class PremiacaoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    public function index()
     {
-        return view('premiacao.criar');
+        $premios = \App\Premio::all();
+        return view('premiacao.DiretorExecutivo.index')->with('premios',$premios);
     }
 
    
     public function store(Request $request)
     {
         $premiacao = new \App\Premio();
-
+     
         $premiacao->titulo = $request->input('titulo');
     	$premiacao->descricao = $request->input('descricao');
         $premiacao->valor = $request->input('valor');
         $premiacao->limite_vagas = $request->input('qtdVagas');
-        $premiacao->data_limite = DateTime::createFromFormat('Y-m-d H:i:s', $request->input('data_expirar') . ' 23:59:59');
-    	
-    	
+
+        $premiacao->data_limite = date($request->input('data_expirar'));
         $insert = $premiacao->save();
-       
+
          if($insert){
              return redirect('/premio');
          }
          else{
             return 'Não foi possivel inserir';
          }
+        return $data;
     }
 
-   
-
-   
     public function show() 
     {
-        $premios = \App\Premio::all();
-        return view('premiacao.vizualisar')->with('premios',$premios);
+        return 'ok';
     }
     
     public function update(Request $request, $id)
     {
         $premio = \App\Premio::find($id);
-        $premio->titulo = $request->get('titulo');
-    	$premio->descricao = $request->get('descricao');
-        $premio->valor = $request->get('valor');
-        $premio->limite_vagas = $request->get('qtdVagas');
-        $premio->data_limite = DateTime::createFromFormat('Y-m-d H:i:s', $request->get('data_expirar') . ' 23:59:59');
+
+        $premio->titulo = $request->input('titulo');
+    	$premio->descricao = $request->input('descricao');
+        $premio->valor = $request->input('valor');
+        $premio->limite_vagas = $request->input('qtdVagas');
+        $premio->data_limite = date($request->input('data_expirar'));
         
         $insert = $premio->save();
+
        
         if($insert){
-           $premios = \App\Premio::all();
-            return view('premiacao.vizualisar')->with('premios',$premios);
+           return redirect('/premio');
         }
         else{
             return 'Não foi possivel atualizar';
@@ -73,12 +71,7 @@ class PremiacaoController extends Controller
     public function delete($id){
         $premio = \App\Premio::find($id);
         $premio->delete();
-        $premios = \App\Premio::all();
-        return view('premiacao.vizualisar')->with('premios',$premios);
+        return redirect('/premio');
     }
     
-    public function destroy(premiacao $premiacao)
-    {
-        return 'ok';
-    }
 }

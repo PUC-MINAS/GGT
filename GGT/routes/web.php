@@ -27,25 +27,24 @@ Route::get('/tarefas/alterar/{id}', "TarefasController@alterar");
 Route::post('/tarefas/store', 'TarefasController@store');
 Route::post('/tarefas/update', 'TarefasController@update');
 
-
-
 Route::get('/cadastro', 'CadastroController@index');
 
 Route::get('/cadastro', 'CadastroController@index');
-
-
-Route::get('/premiacao', 'PremiacaoController@show');
-
-Route::get('/premiacao/criar', 'PremiacaoController@create');
-
-Route::post('/premiacao/store', 'PremiacaoController@store');
 
 Route::resource('cadastro', 'UsuariosController');
 
-Route::get('/premiacao/delete/{id}', 'PremiacaoController@delete');
-
-Route::post('/premiacao/update/{id}', 'PremiacaoController@update');
-
 Route::post('/cadastro/registro-membro', 'CadastroController@gravaRegistro');
+
+Route::get('/premio/diretor', 'PremiacaoController@create');
+
+Route::get('/premio/trainee', 'PremiacaoController@create');
+
+Route::get('/premio', 'PremiacaoController@index');
+
+Route::post('premio/criar', 'PremiacaoController@store');
+
+Route::get('/premio/delete/{id}', 'PremiacaoController@delete');
+
+Route::post('/premio/update/{id}', 'PremiacaoController@update');
 
 Auth::routes();
