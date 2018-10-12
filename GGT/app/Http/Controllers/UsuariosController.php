@@ -40,13 +40,17 @@ class UsuariosController extends Controller
     public function edit($id)
     {
         $usuario = Usuario::findOrFail($id);
-        return view('cadastro.editar',compact('usuario'));
+        return view('cadastro.alterar',compact('usuario'));
     }
 
     public function update(Request $request, $id)
     {
         $usuario = Usuario::findOrFail($id);
-        $usuario->update($request->all());
+		$usuario->nome = $request->input('nome-completo');
+		$usuario->email = $request->input('email');
+		$usuario->tipos_usuarios_id = $request->input('cargo');
+        $usuario->setores_id = $request->input('diretoria');
+        $usuario->save();
 
         return redirect()->route('cadastro.index')
                         ->with('success','Usuario alterado com sucesso!');

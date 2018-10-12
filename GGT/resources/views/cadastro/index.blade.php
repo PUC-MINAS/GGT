@@ -34,7 +34,7 @@
                         <form action="{{ route('cadastro.destroy', $usuario->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         </form>
                     </td>
                 </tr>
