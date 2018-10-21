@@ -23,7 +23,10 @@ Route::get('/index', function () {
 Route::get('/tarefas', 'TarefasController@index');
 Route::get('/tarefas/criar', 'TarefasController@create');
 Route::get('/tarefas/alterar/{id}', "TarefasController@alterar");
+Route::get('/tarefas/detalhes/{id}', "TarefasController@detalhes");
 
+Route::post('/tarefas/deletar', "TarefasController@deletar");
+Route::post('/tarefas/desativar', 'TarefasController@desativar');
 Route::post('/tarefas/store', 'TarefasController@store');
 Route::post('/tarefas/update', 'TarefasController@update');
 

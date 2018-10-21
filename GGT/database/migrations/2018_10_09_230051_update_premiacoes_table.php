@@ -27,6 +27,10 @@ class UpdatePremiacoesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('premiacoes', function (Blueprint $table) {
+            
+            $table->dropForeign('premiacoes_premio_id_foreign');
+            $table->dropForeign('premiacoes_user_id_foreign');
+        });
     }
 }

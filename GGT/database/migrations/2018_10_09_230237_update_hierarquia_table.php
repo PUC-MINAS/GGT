@@ -31,6 +31,10 @@ class UpdateHierarquiaTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('hierarquias', function (Blueprint $table) {
+            
+            $table->dropForeign('hierarquias_users_id_subordinado_foreign');
+            $table->dropForeign('hierarquias_users_id_superior_foreign');
+        });
     }
 }

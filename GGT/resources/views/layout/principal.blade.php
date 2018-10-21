@@ -16,6 +16,7 @@
 
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{URL::asset('assets/css/light-bootstrap-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}">
 
 </head>
 <body>
