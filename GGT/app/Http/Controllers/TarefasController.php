@@ -19,7 +19,7 @@ class TarefasController extends Controller
     {
 		$tarefas = Tarefa::all();
 		//dd($tarefas);
-    	return view('tarefas.index')->with('tarefas', $tarefas);
+    	return view('tarefas.DiretorExecutivo.index')->with('tarefas', $tarefas);
     }
 
     public function create(){
@@ -27,7 +27,7 @@ class TarefasController extends Controller
 		$setores = Setor::all();
 		$subordinados = Usuario::all();
 
-    	return view('tarefas.create')->with('subordinados', $subordinados)->with('setores', $setores);
+    	return view('tarefas.DiretorExecutivo.create')->with('subordinados', $subordinados)->with('setores', $setores);
 	}
 	
 	public function alterar($id){
@@ -38,7 +38,15 @@ class TarefasController extends Controller
 
 		$subordinados = Usuario::all();
 		
-		return view('tarefas.alterar')->with('tarefa', $tarefa)->with('subordinados', $subordinados);
+		return view('tarefas.DiretorExecutivo.alterar')->with('tarefa', $tarefa)->with('subordinados', $subordinados);
+	}
+
+	public function detalhes($id){
+		$tarefa = Tarefa::find($id);
+
+		//dd($tarefa->statusTarefa());
+
+		return view('tarefas.DiretorExecutivo.detalhes')->with('tarefa', $tarefa);
 	}
 
     public function store(Request $request){
@@ -75,6 +83,20 @@ class TarefasController extends Controller
 
 		$tarefa->save();
 
+		return redirect('/tarefas');
+	}
+
+	public function deletar(Request $request){
+		$tarefa = Tarefa::findOrFail($request->input('id'));
+		//dd($tarefa);
+		$tarefa->delete();
+		return redirect('/tarefas');
+	}
+
+	public function desativar(Request $request){
+		$tarefa = Tarefa::findOrFail($request->input('id'));
+		$tarefa->desativar();
+		$tarefa->save();
 		return redirect('/tarefas');
 	}
 }

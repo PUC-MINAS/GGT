@@ -16,7 +16,7 @@ class UpdateTarefasTable extends Migration
         Schema::table('tarefas', function (Blueprint $table) {
             
             
-            /*$table->foreign('users_id_criador')
+            $table->foreign('users_id_criador')
                     ->references('id')
                     ->on('users');
             $table->foreign('users_id_responsavel')
@@ -24,7 +24,7 @@ class UpdateTarefasTable extends Migration
                     ->on('users');
             $table->foreign('status_tarefas_id')
                     ->references('id')
-                    ->on('status_tarefas');*/
+                    ->on('status_tarefas');
         });
     }
 
@@ -35,6 +35,11 @@ class UpdateTarefasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('tarefas', function (Blueprint $table) {
+            
+            $table->dropForeign('tarefas_users_id_criador_foreign');
+            $table->dropForeign('tarefas_users_id_responsavel_foreign');
+            $table->dropForeign('tarefas_status_tarefas_id_foreign');
+        });
     }
 }
