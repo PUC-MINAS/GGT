@@ -28,17 +28,21 @@
                     <td>{{ $usuario->tipo_usuario['titulo']}}</td>
                     <td>{{ $usuario->setor['titulo']}}</td>
 
-                    <td>
-                        <a class="btn btn-info" href="{{ route('cadastro.edit',$usuario->id) }}">Editar</a>
-                    </td>
+                    @if (!Auth::user())
+                        <td>
+                            <a class="btn btn-info" href="{{ route('cadastro.edit',$usuario->id) }}">Editar</a>
+                        </td>
+                    @endif
 
-                    <td>
-                        <form action="{{ route('cadastro.destroy', $usuario->id) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                        </form>
-                    </td>
+                    @if(!($usuario->tipos_usuarios_id == 1 && $usuario->setores_id == 1))
+                        <td>
+                            <form action="{{ route('cadastro.destroy', $usuario->id) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             @empty
             @endforelse
