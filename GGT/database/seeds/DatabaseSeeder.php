@@ -9,8 +9,20 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        // $this->call(UsersTableSeeder::class);
-    }
+     public function run()
+     {
+         // $this->call(UsersTableSeeder::class);
+
+         DB::table('tipos_usuarios')->insert([
+           ['titulo' => 'Diretor Executivo'],
+           ['titulo' => 'Diretor'],
+           ['titulo' => 'Trainee']
+         ]);
+
+         DB::table('setores')->insert([
+           ['titulo' => 'Diretoria Financeira'],
+           ['titulo' => 'Diretoria de Marketing'],
+           ['titulo' => 'Diretoria de Projetos']
+         ]);
+     }
 }
