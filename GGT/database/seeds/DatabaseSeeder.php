@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      {
          // $this->call(UsersTableSeeder::class);
 
+         //popula tabelas
          DB::table('tipos_usuarios')->insert([
            ['titulo' => 'Diretor Executivo'],
            ['titulo' => 'Diretor'],
