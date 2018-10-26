@@ -34,18 +34,17 @@
 					<label>Cargo</label>
 					<select class="form-control" name="cargo" id="cargo">[
 						<option></option>
-						<option value=1>Diretor(a)</option>
-						<option value=2>Trainee</option>
+						<option value=2>Diretor(a)</option>
+						<option value=3>Trainee</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label>Diretoria</label>
+					<label>Setor</label>
 					<select class="form-control" name="diretoria" id="diretoria">[
 						<option></option>
-						<option value=1>Diretoria Executiva</option>
-						<option value=2>Diretoria Financeira</option>
-						<option value=3>Diretoria de Marketing</option>
-						<option value=4>Diretoria de Projetos</option>
+						<option value=1>Financeiro</option>
+						<option value=2>Marketing</option>
+						<option value=3>Projetos</option>
 					</select>
 				</div>
 				<button type="submit" class="btn btn-success btn-fill">Cadastrar</button>
