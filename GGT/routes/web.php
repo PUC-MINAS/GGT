@@ -13,15 +13,15 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('auth');
 
 Route::get('/index', function () {
     return view('index');
-});
+})->middleware('auth');
 
 Route::get('/home', function () {
     return view('index');
-});
+})->middleware('auth');
 
 
 Route::get('/tarefas', 'TarefasController@index');
