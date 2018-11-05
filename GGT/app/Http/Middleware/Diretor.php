@@ -21,5 +21,6 @@ class Diretor
       else {
         return redirect('/index');
       }
+
     }
 }
