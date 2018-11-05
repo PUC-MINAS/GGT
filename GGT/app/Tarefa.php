@@ -27,4 +27,12 @@ class Tarefa extends Model
         $status = StatusTarefa::where('titulo', 'DESATIVADA')->first();
         $this->status_tarefas_id = $status->id;
     }
+
+    public function ativa() {
+        return $this->status_tarefas_id == 1;
+    }
+
+    public function atrasada(){
+        return strtotime($this->data_limite) < strtotime('now') ;
+    }
 }

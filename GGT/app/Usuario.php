@@ -23,4 +23,21 @@ class Usuario extends Authenticatable
         return $this->belongsTo('App\TiposUsuarios', 'tipos_usuarios_id');
     }
 
+    public function tarefasAFazer(){
+        //return Tarefa::where('users_id_responsavel', $this->id)->get();
+        return $this->hasMany('App\Tarefa', 'users_id_responsavel')
+                    ->where('status_tarefas_id',1)
+                    ->get();
+    }
+
+    public function tarefasParaAvaliar(){
+        return $this->hasMany('App\Tarefa', 'users_id_criador')
+                    ->where('status_tarefas_id',2)
+                    ->get();
+    }
+
+    public function tipoUsuario(){
+        return $this->tipos_usuarios_id;
+    }
+
 }

@@ -10,6 +10,7 @@ use App\StatusTarefa;
 use App\Setor;
 use App\Usuario;
 use Date;
+use Auth;
 
 class TarefasController extends Controller
 {
@@ -44,9 +45,16 @@ class TarefasController extends Controller
 	public function detalhes($id){
 		$tarefa = Tarefa::find($id);
 
+		//dd($tarefa->atrasada());
+
 		//dd($tarefa->statusTarefa());
 
-		return view('tarefas.DiretorExecutivo.detalhes')->with('tarefa', $tarefa);
+		if (Auth::user()->tipoUsuario() == 1)
+			return view('tarefas.DiretorExecutivo.detalhes')->with('tarefa', $tarefa);
+		else if (Auth::user()->tipoUsuario() == 2)
+			return view('tarefas.Diretor.detalhes')->with('tarefa', $tarefa);
+		else if (Auth::user()->tipoUsuario() == 3)
+			return view('tarefas.Trainee.detalhes')->with('tarefa', $tarefa);
 	}
 
     public function store(Request $request){

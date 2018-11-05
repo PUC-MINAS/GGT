@@ -11,17 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->middleware('auth');
+// Route::get('/', function () {
+//     return view('index');
+// })->middleware('auth');
 
-Route::get('/index', function () {
-    return view('index');
-})->middleware('auth');
 
-Route::get('/home', function () {
-    return view('index');
-})->middleware('auth');
+
+// Route::get('/index', function () {
+//     return view('index');
+// })->middleware('auth');
+
+// Route::get('/home', function () {
+//     return view('index');
+// })->middleware('auth');
+
+Route::get('/index', 'HomeController@index')->middleware('auth');
+Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/home', 'HomeController@index')->middleware('auth');
 
 
 Route::get('/tarefas', 'TarefasController@index');
