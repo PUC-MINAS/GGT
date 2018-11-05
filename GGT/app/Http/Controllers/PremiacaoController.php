@@ -20,6 +20,13 @@ class PremiacaoController extends Controller
         return view('premiacao.DiretorExecutivo.index')->with('premios',$premios);
     }
 
+    public function regatar($id){
+        
+        $premio = \App\Premio::find($id);
+
+        $premio->limite_vagas =  $premio->limite_vagas-1;
+
+    }
    
     public function store(Request $request)
     {
@@ -47,25 +54,26 @@ class PremiacaoController extends Controller
         return 'ok';
     }
     
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $premio = \App\Premio::find($id);
+        $premio = \App\Premio::find($request->input('id'));
 
         $premio->titulo = $request->input('titulo');
     	$premio->descricao = $request->input('descricao');
         $premio->valor = $request->input('valor');
         $premio->limite_vagas = $request->input('qtdVagas');
+
         $premio->data_limite = date($request->input('data_expirar'));
-        
         $insert = $premio->save();
 
-       
-        if($insert){
-           return redirect('/premio');
-        }
-        else{
-            return 'Não foi possivel atualizar';
-        }
+         if($insert){
+             return redirect('/premio');
+         }
+         else{
+            return 'Não foi possivel inserir';
+         }
+        return $data;
+        
     }
 
     public function delete($id){
