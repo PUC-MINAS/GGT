@@ -23,7 +23,7 @@ class VerifyCsrfToken extends Middleware
 
 	'/cadastro/registro-membro',
 
-	'/premio/update/*',
+	'/premio/update/',
 
 	'premio/criar'
     ];

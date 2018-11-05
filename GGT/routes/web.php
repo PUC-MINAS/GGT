@@ -58,6 +58,10 @@ Route::post('premio/criar', 'PremiacaoController@store');
 
 Route::get('/premio/delete/{id}', 'PremiacaoController@delete');
 
-Route::post('/premio/update/{id}', 'PremiacaoController@update');
+Route::post('/premio/atualizar', 'PremiacaoController@update');
+
+Route::post('/premio/update', 'PremiacaoController@update');
+
+Route::get('/premio/regatar', 'PremiacaoController@regatar');
 
 Auth::routes();
