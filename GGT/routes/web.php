@@ -25,43 +25,32 @@
 //     return view('index');
 // })->middleware('auth');
 
+/* Rotas Home */
 Route::get('/index', 'HomeController@index')->middleware('auth');
 Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
-
+/* Rotas Tarefas*/
 Route::get('/tarefas', 'TarefasController@index');
 Route::get('/tarefas/criar', 'TarefasController@create');
 Route::get('/tarefas/alterar/{id}', "TarefasController@alterar");
 Route::get('/tarefas/detalhes/{id}', "TarefasController@detalhes");
-
 Route::post('/tarefas/deletar', "TarefasController@deletar");
 Route::post('/tarefas/desativar', 'TarefasController@desativar');
 Route::post('/tarefas/store', 'TarefasController@store');
 Route::post('/tarefas/update', 'TarefasController@update');
 
-Route::get('/cadastro', 'CadastroController@index');
-
-Route::get('/cadastro', 'CadastroController@index');
-
+/* Rotas Cadastro */
 Route::resource('cadastro', 'UsuariosController');
 
-Route::post('/cadastro/registro-membro', 'CadastroController@gravaRegistro');
-
+/* Rotas Premiacao */
 Route::get('/premio/diretor', 'PremiacaoController@create');
-
 Route::get('/premio/trainee', 'PremiacaoController@create');
-
 Route::get('/premio', 'PremiacaoController@index');
-
 Route::post('premio/criar', 'PremiacaoController@store');
-
 Route::get('/premio/delete/{id}', 'PremiacaoController@delete');
-
 Route::post('/premio/atualizar', 'PremiacaoController@update');
-
 Route::post('/premio/update', 'PremiacaoController@update');
-
 Route::get('/premio/regatar', 'PremiacaoController@regatar');
 
 Auth::routes();
