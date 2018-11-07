@@ -39,5 +39,10 @@ class DatabaseSeeder extends Seeder
            ['nome' => 'Diretor','email' => 'diretor@gmail.com', 'senha' => '123456', 'tipos_usuarios_id' => '2', 'setores_id' => '1'],
            ['nome' => 'Trainee','email' => 'trainee@gmail.com', 'senha' => '123456', 'tipos_usuarios_id' => '3', 'setores_id' => '1']
          ]);
+
+         DB::table('hierarquias')->insert([
+           ['users_id_superior' => 1, 'users_id_subordinado' => 2],
+           ['users_id_superior' => 2, 'users_id_subordinado' => 3]
+         ]);
      }
 }
