@@ -39,6 +39,8 @@ Route::post('/tarefas/deletar', "TarefasController@deletar");
 Route::post('/tarefas/desativar', 'TarefasController@desativar');
 Route::post('/tarefas/store', 'TarefasController@store');
 Route::post('/tarefas/update', 'TarefasController@update');
+Route::post('/tarefas/avaliar', "TarefasController@avaliar");
+Route::post('/tarefas/solicitarCorrecao', "TarefasController@solicitarCorrecao");
 
 /* Rotas Cadastro */
 Route::resource('cadastro', 'UsuariosController');
