@@ -30,7 +30,7 @@ class TarefasController extends Controller
 
     	return view('tarefas.DiretorExecutivo.create')->with('subordinados', $subordinados)->with('setores', $setores);
 	}
-	
+
 	public function alterar($id){
 		$tarefa = Tarefa::find($id);
 		$tarefa->criador = Usuario::find($tarefa->users_id_criador);
@@ -38,7 +38,7 @@ class TarefasController extends Controller
 		$tarefa->status = StatusTarefa::find($tarefa->status_tarefas_id);
 
 		$subordinados = Usuario::all();
-		
+
 		return view('tarefas.DiretorExecutivo.alterar')->with('tarefa', $tarefa)->with('subordinados', $subordinados);
 	}
 
@@ -58,7 +58,7 @@ class TarefasController extends Controller
 	}
 
     public function store(Request $request){
-    	
+
     	$tarefa = new Tarefa();
     	$tarefa->titulo = $request->input('titulo');
     	$tarefa->descricao = $request->input('descricao');
@@ -78,9 +78,9 @@ class TarefasController extends Controller
 
 		return redirect('/tarefas');
 	}
-	
+
 	public function update(Request $request) {
-		
+
 		$tarefa = Tarefa::find($request->input('id'));
 		$tarefa->titulo = $request->input('titulo');
 		$tarefa->descricao = $request->input('descricao');

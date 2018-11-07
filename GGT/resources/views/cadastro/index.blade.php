@@ -11,7 +11,9 @@
 	  </ol>
 	</nav>
 
-    <a href="{{url('cadastro/create')}}"  class="btn btn-primary btn-fill">Cadastrar Usuário</a>
+    @if(Auth::user()->tipo_usuario['titulo'] == "Diretor Executivo")
+        <a href="{{url('cadastro/create')}}"  class="btn btn-primary btn-fill">Cadastrar Usuário</a>
+    @endif
 
     <div class="table-responsive table-full-width">
         <table class="table table-hover">
@@ -28,13 +30,16 @@
                     <td>{{ $usuario->tipo_usuario['titulo']}}</td>
                     <td>{{ $usuario->setor['titulo']}}</td>
 
-                    @if (!Auth::user())
+                    @if ((Auth::user()->tipo_usuario['titulo'] == "Diretor Executivo"
+                       || Auth::user()->id == $usuario->id)
+                       && $usuario->tipo_usuario['titulo'] != "Diretor Executivo")
                         <td>
                             <a class="btn btn-info" href="{{ route('cadastro.edit',$usuario->id) }}">Editar</a>
                         </td>
                     @endif
 
-                    @if(!($usuario->tipos_usuarios_id == 1 && $usuario->setores_id == 1))
+                    @if (Auth::user()->tipo_usuario['titulo'] == "Diretor Executivo"
+                      && $usuario->tipo_usuario['titulo'] != "Diretor Executivo")
                         <td>
                             <form action="{{ route('cadastro.destroy', $usuario->id) }}" method="POST">
                                 @method('DELETE')

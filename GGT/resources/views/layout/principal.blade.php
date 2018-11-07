@@ -41,27 +41,29 @@
                         </a>
                     </li>
 		    </li>
-			<li>
+			        {{-- <li>
                         <a class="nav-link" href="{{url('login')}}">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Login</p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a class="nav-link" href="{{url('tarefas')}}">
                             <i class="nc-icon nc-notes"></i>
                             <p>Tarefas</p>
                         </a>
                     </li>
+
                     <li>
                         <a class="nav-link" href="{{url('cadastro')}}">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Usuários</p>
-                        </a>	
-                    </li>	
-			        <li>	
-                        <a class="nav-link" href="{{url('premio')}}">	
-                            <i class="nc-icon nc-notes"></i>	
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="{{url('premio')}}">
+                            <i class="nc-icon nc-notes"></i>
                             <p>Premios</p>
                         </a>
                     </li>
@@ -265,14 +267,14 @@
 <!--scripts adicionais -->
 <script>
     $('#exampleModal').on('show.bs.modal', function (event) {
-  var premio = $(event.relatedTarget) 
+  var premio = $(event.relatedTarget)
   var titulo = premio.data('titulo')
   var descricao = premio.data('descricao')
   var valor = premio.data('valor')
   var data_expirar = premio.data('time')
   var vagas = premio.data('vagas')
   var id = premio.data('id')
-  
+
   var modal = $(this)
   modal.find('.modal-body #titulo').val(titulo)
   modal.find('.modal-body #descricao').val(descricao)
