@@ -3,34 +3,54 @@
 
 @section('conteudo')
 
-    <nav aria-label="breadcrumb">
-	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item">Home</li>
-	    <!-- <li class="breadcrumb-item active" aria-current="page">Tarefas</li> -->	    
-	  </ol>
-	</nav>
+    <style>
+        .title-inline{
+            /* display: inline-block; */
+        }
+
+        .task-header .div-right{
+            text-align: right;
+        }
+
+        .task-header .div-right button i {            
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        
+    </style>
 
     <div class="container">
         <div class=row>
-            <div class="col-md-6">
-
+            <div class="col-md">
                 <div class="card card-task">
-                    <div class="card-header">
-                        <h4 class="card-title">Tarefas a Concluir</h4>
+                    <div class="card-header task-header">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Tarefas para Avaliar</h4>
+                            </div>
+                            <div class="col div-right">
+                                <button class="btn btn-primary btn-sm btn-fill" title="Criar nova tarefa"><i class="nc-icon nc-simple-add"></i> <i class="nc-icon nc-notes"></i></button>
+                            </div> 
+                        </div>
+                                          
+                        
                     </div>
                     <div class="card-body">
-                        <div class="table-full-width">
-                            <table class="table">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
                                 <tbody>
+                                    @foreach($user->tarefasParaAvaliar() as $t)
                                     <tr>
-                                        <td>Tarefa</td>
+                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->titulo}}</a></td>
+                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->data_limite}}</a></td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
