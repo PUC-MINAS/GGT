@@ -12,12 +12,12 @@
             text-align: right;
         }
 
-        .task-header .div-right button i {            
+        .task-header .div-right button i {
             font-size: 16px;
             font-weight: 800;
         }
 
-        
+
     </style>
 
     <div class="container">
@@ -31,10 +31,10 @@
                             </div>
                             <div class="col div-right">
                                 <button class="btn btn-primary btn-sm btn-fill" title="Criar nova tarefa"><i class="nc-icon nc-simple-add"></i> <i class="nc-icon nc-notes"></i></button>
-                            </div> 
+                            </div>
                         </div>
-                                          
-                        
+
+
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -42,8 +42,8 @@
                                 <tbody>
                                     @foreach($user->tarefasParaAvaliar() as $t)
                                     <tr>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->titulo}}</a></td>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->data_limite}}</a></td>
+                                      <td><a href="{{url('/tarefas/avaliacao/'.$t->id)}}">{{$t->titulo}}</a></td>
+                                      <td><a href="{{url('/tarefas/avaliacao/'.$t->id)}}">{{$t->data_limite}}</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -35,6 +35,7 @@ Route::get('/tarefas', 'TarefasController@index');
 Route::get('/tarefas/criar', 'TarefasController@create');
 Route::get('/tarefas/alterar/{id}', "TarefasController@alterar");
 Route::get('/tarefas/detalhes/{id}', "TarefasController@detalhes");
+Route::get('/tarefas/avaliacao/{id}', "TarefasController@avaliacao");
 Route::post('/tarefas/deletar', "TarefasController@deletar");
 Route::post('/tarefas/desativar', 'TarefasController@desativar');
 Route::post('/tarefas/store', 'TarefasController@store');
