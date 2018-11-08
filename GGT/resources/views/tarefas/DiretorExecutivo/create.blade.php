@@ -56,7 +56,7 @@
 					<select class="form-control" name="responsavel" id="responsavel">
 						<option></option>
 						@foreach($subordinados as $s)
-						<option value="{{$s->id}}">{{$s->nome}}</option>
+							<option value="{{$s->id}}">{{$s->nome}}</option>
 						@endforeach
 						<!--<option value="2">Subordinado2</option>
 						<option value="3">Subordinado3</option>

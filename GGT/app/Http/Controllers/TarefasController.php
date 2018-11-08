@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tarefa;
 use App\StatusTarefa;
-use App\Setor;
+use App\Setores;
 use App\Usuario;
 use Date;
 use Auth;
@@ -25,7 +25,7 @@ class TarefasController extends Controller
 
     public function create(){
 
-		$setores = Setor::all();
+		$setores = Setores::all();
 		$subordinados = Usuario::all();
 
     	return view('tarefas.DiretorExecutivo.create')->with('subordinados', $subordinados)->with('setores', $setores);
@@ -66,10 +66,10 @@ class TarefasController extends Controller
 		//$tarefa->data_limite = DateTime::createFromFormat('Y-m-d H:i:s', $request->input('data_limite') . ' 23:59:59');
 		$tarefa->data_limite = date($request->input('data_limite'));
 		$status = StatusTarefa::find(1);
-		$criador = Usuario::find(1);
-		$responsavel = Usuario::find(2);
+		$criador = Auth::user();
+		$idresponsavel = $request->input('responsavel');//Usuario::find(2);
 		$tarefa->users_id_criador = $criador->id;
-		$tarefa->users_id_responsavel = $responsavel->id;
+		$tarefa->users_id_responsavel = $idresponsavel;
 		//dd($status);
 		$tarefa->status_tarefas_id = $status->id;
 		//dd($tarefa);
