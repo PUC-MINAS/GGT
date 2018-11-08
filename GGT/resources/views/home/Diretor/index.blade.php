@@ -6,7 +6,7 @@
     <!-- <nav aria-label="breadcrumb">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item">Home</li>
-	     <li class="breadcrumb-item active" aria-current="page">Tarefas</li>     
+	     <li class="breadcrumb-item active" aria-current="page">Tarefas</li>
 	  </ol>
 	</nav> -->
 
@@ -52,8 +52,8 @@
                                 <tbody>
                                     @foreach($user->tarefasParaAvaliar() as $t)
                                     <tr>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->titulo}}</a></td>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->data_limite}}</a></td>
+                                      <td><a href="{{url('/tarefas/avaliacao/'.$t->id)}}">{{$t->titulo}}</a></td>
+                                      <td><a href="{{url('/tarefas/avaliacao/'.$t->id)}}">{{$t->data_limite}}</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

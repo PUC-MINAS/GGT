@@ -12,13 +12,17 @@
             text-align: right;
         }
 
+<<<<<<< HEAD
         .task-header .div-right a i {            
+=======
+        .task-header .div-right button i {
+>>>>>>> master
             font-size: 16px;
             font-weight: 800;
             color: white;
         }
 
-        
+
     </style>
 
     <div class="container">
@@ -36,8 +40,8 @@
                                 </a>
                             </div>  -->
                         </div>
-                                          
-                        
+
+
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -45,8 +49,8 @@
                                 <tbody>
                                     @foreach($user->tarefasParaAvaliar() as $t)
                                     <tr>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->titulo}}</a></td>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->data_limite}}</a></td>
+                                      <td><a href="{{url('/tarefas/avaliacao/'.$t->id)}}">{{$t->titulo}}</a></td>
+                                      <td><a href="{{url('/tarefas/avaliacao/'.$t->id)}}">{{$t->data_limite}}</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
