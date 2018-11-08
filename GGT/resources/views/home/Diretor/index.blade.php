@@ -39,7 +39,12 @@
             <div class="col-md-6">
             <div class="card card-task">
                     <div class="card-header">
-                        <h4 class="card-title">Tarefas para Avaliar</h4>
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Tarefas para Avaliar</h4>
+                            </div>
+                            
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

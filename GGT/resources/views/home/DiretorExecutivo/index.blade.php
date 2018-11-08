@@ -12,9 +12,14 @@
             text-align: right;
         }
 
+<<<<<<< HEAD
+        .task-header .div-right a i {            
+=======
         .task-header .div-right button i {
+>>>>>>> master
             font-size: 16px;
             font-weight: 800;
+            color: white;
         }
 
 
@@ -29,9 +34,11 @@
                             <div class="col">
                                 <h4 class="card-title">Tarefas para Avaliar</h4>
                             </div>
-                            <div class="col div-right">
-                                <button class="btn btn-primary btn-sm btn-fill" title="Criar nova tarefa"><i class="nc-icon nc-simple-add"></i> <i class="nc-icon nc-notes"></i></button>
-                            </div>
+                            <!-- <div class="col div-right">
+                                <a href="{{url('tarefas/criar')}}" class="btn btn-primary btn-sm btn-fill" title="Criar nova tarefa">
+                                <i class="nc-icon nc-simple-add"></i> <i class="nc-icon nc-notes"></i>
+                                </a>
+                            </div>  -->
                         </div>
 
 
