@@ -25,10 +25,12 @@ class TarefasController extends Controller
 
     public function create(){
 
-		$setores = Setores::all();
-		$subordinados = Usuario::all();
+		$user = Auth::user();
 
-    	return view('tarefas.DiretorExecutivo.create')->with('subordinados', $subordinados)->with('setores', $setores);
+		if($user->tipo_usuario()->titulo == "Diretor Executivo")
+			return view('tarefas.DiretorExecutivo.create')->with('user', $user);
+		else if($user->tipo_usuario()->titulo == "Diretor")
+			return view('tarefas.DiretorExecutivo.create')->with('user', $user);
 	}
 
 	public function alterar($id){
@@ -63,32 +65,29 @@ class TarefasController extends Controller
     	$tarefa->titulo = $request->input('titulo');
     	$tarefa->descricao = $request->input('descricao');
     	$tarefa->recompensa = $request->input('recompensa');
-		//$tarefa->data_limite = DateTime::createFromFormat('Y-m-d H:i:s', $request->input('data_limite') . ' 23:59:59');
 		$tarefa->data_limite = date($request->input('data_limite'));
 		$status = StatusTarefa::find(1);
 		$criador = Auth::user();
-		$idresponsavel = $request->input('responsavel');//Usuario::find(2);
+		$idresponsavel = $request->input('responsavel');
 		$tarefa->users_id_criador = $criador->id;
 		$tarefa->users_id_responsavel = $idresponsavel;
-		//dd($status);
 		$tarefa->status_tarefas_id = $status->id;
-		//dd($tarefa);
 
     	$tarefa->save();
 
 		return redirect('/tarefas');
 	}
 
-  public function avaliar(Request $request) {
+	public function avaliar(Request $request) {
 
 		$tarefa = Tarefa::find($request->input('id'));
 		$tarefa->status_tarefas_id = StatusTarefa::find(3)->id;
 
-    $usuario = $tarefa->responsavel();
-    $usuario->pontos = $usuario->pontos + $request->input('pontos');
+		$usuario = $tarefa->responsavel();
+		$usuario->pontos = $usuario->pontos + $request->input('pontos');
 
-    $tarefa->save();
-    $usuario->save();
+		$tarefa->save();
+		$usuario->save();
 
 		return redirect('/');
 	}
