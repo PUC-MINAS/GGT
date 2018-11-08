@@ -66,7 +66,7 @@ class TarefasController extends Controller
 		//$tarefa->data_limite = DateTime::createFromFormat('Y-m-d H:i:s', $request->input('data_limite') . ' 23:59:59');
 		$tarefa->data_limite = date($request->input('data_limite'));
 		$status = StatusTarefa::find(1);
-		$criador = Usuario::find(1);
+		$criador = Auth::user()->id;
 		$responsavel = Usuario::find(2);
 		$tarefa->users_id_criador = $criador->id;
 		$tarefa->users_id_responsavel = $responsavel->id;
