@@ -57,6 +57,15 @@ class TarefasController extends Controller
 			return view('tarefas.Trainee.detalhes')->with('tarefa', $tarefa);
 	}
 
+  public function avaliacao($id){
+		$tarefa = Tarefa::find($id);
+
+		if (Auth::user()->tipoUsuario() == 1)
+			return view('tarefas.DiretorExecutivo.avaliacao')->with('tarefa', $tarefa);
+		else if (Auth::user()->tipoUsuario() == 2)
+			return view('tarefas.Diretor.avaliacao')->with('tarefa', $tarefa);
+	}
+
     public function store(Request $request){
 
     	$tarefa = new Tarefa();
