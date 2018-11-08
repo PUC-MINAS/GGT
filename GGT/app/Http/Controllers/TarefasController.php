@@ -79,6 +79,30 @@ class TarefasController extends Controller
 		return redirect('/tarefas');
 	}
 
+  public function avaliar(Request $request) {
+
+		$tarefa = Tarefa::find($request->input('id'));
+		$tarefa->status_tarefas_id = StatusTarefa::find(3)->id;
+
+    $usuario = $tarefa->responsavel();
+    $usuario->pontos = $usuario->pontos + $request->input('pontos');
+
+    $tarefa->save();
+    $usuario->save();
+
+		return redirect('/');
+	}
+
+  public function solicitarCorrecao(Request $request) {
+
+		$tarefa = Tarefa::find($request->input('id'));
+		$tarefa->status_tarefas_id = StatusTarefa::find(1)->id;
+
+		$tarefa->save();
+
+		return redirect('/');
+	}
+
 	public function update(Request $request) {
 
 		$tarefa = Tarefa::find($request->input('id'));
