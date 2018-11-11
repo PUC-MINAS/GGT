@@ -19,7 +19,7 @@ class Usuario extends Authenticatable
         return $this->belongsTo('App\Setores', 'setores_id');
     }
 
-    public function tipo_usuario(){
+    public function tipoUsuario(){
         //return $this->belongsTo('App\TiposUsuarios', 'tipos_usuarios_id');
         return TiposUsuarios::find($this->tipos_usuarios_id);
     }
@@ -37,9 +37,7 @@ class Usuario extends Authenticatable
                     ->get();
     }
 
-    public function tipoUsuario(){
-        return $this->tipos_usuarios_id;
-    }
+    
 
     public function subordinados(){
         return $this->belongsToMany('App\Usuario', 'hierarquias', 'users_id_superior', 'users_id_subordinado')->get();

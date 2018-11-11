@@ -12,7 +12,6 @@ use App\Usuario;
 use Date;
 use Auth;
 use App\Mail\Email;
-use App\PHPMailer\PHPMailer;
 
 class TarefasController extends Controller
 {
@@ -33,9 +32,9 @@ class TarefasController extends Controller
 
 		$user = Auth::user();
 
-		if($user->tipo_usuario()->titulo == "Diretor Executivo")
+		if($user->tipoUsuario()->titulo == "Diretor Executivo")
 			return view('tarefas.DiretorExecutivo.create')->with('user', $user);
-		else if($user->tipo_usuario()->titulo == "Diretor")
+		else if($user->tipoUsuario()->titulo == "Diretor")
 			return view('tarefas.DiretorExecutivo.create')->with('user', $user);
 	}
 

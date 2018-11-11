@@ -11,7 +11,6 @@
 |
 */
 
-use App\Mail\Email;
 
 /* Rotas Home */
 Route::get('/index', 'HomeController@index')->middleware('auth');
@@ -45,12 +44,3 @@ Route::post('/premio/update', 'PremiacaoController@update');
 Route::get('/premio/regatar', 'PremiacaoController@regatar');
 
 Auth::routes();
-
-
-Route::get('/mail', function () {
-
-    Mail::to('saquib.rizwan@xyz.com')->send(new Email); 
-
-    return view('emails.email');
-
-});

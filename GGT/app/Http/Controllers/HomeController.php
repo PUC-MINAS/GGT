@@ -16,8 +16,8 @@ class HomeController extends Controller
 
         //dd($tarefas);
 
-        if( $user->tipoUsuario() == 1 ) return view('home.DiretorExecutivo.index')->with('user', $user);
-        else if($user->tipoUsuario() == 2) return view('home.Diretor.index')->with('user', $user);
-        else if($user->tipoUsuario() == 3) return view('home.Trainee.index')->with('user', $user);
+        if( $user->tipoUsuario()->titulo == "Diretor Executivo" ) return view('home.DiretorExecutivo.index')->with('user', $user);
+        else if($user->tipoUsuario()->titulo == "Diretor") return view('home.Diretor.index')->with('user', $user);
+        else if($user->tipoUsuario()->titulo == "Trainee") return view('home.Trainee.index')->with('user', $user);
     }
 }
