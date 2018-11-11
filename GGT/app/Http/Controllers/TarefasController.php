@@ -11,6 +11,8 @@ use App\Setores;
 use App\Usuario;
 use Date;
 use Auth;
+use App\Mail\Email;
+use App\PHPMailer\PHPMailer;
 
 class TarefasController extends Controller
 {
@@ -19,7 +21,11 @@ class TarefasController extends Controller
     public function index()
     {
 		$tarefas = Tarefa::all();
+		//Email::enviar();
 		//dd($tarefas);
+
+		//Email::enviar("ravi.g.assis@gmail.com", "Assunto Teste", "Corpo teste");
+
     	return view('tarefas.DiretorExecutivo.index')->with('tarefas', $tarefas);
     }
 
@@ -82,7 +88,20 @@ class TarefasController extends Controller
 		$tarefa->users_id_responsavel = $idresponsavel;
 		$tarefa->status_tarefas_id = $status->id;
 
-    	$tarefa->save();
+		$tarefa->save();
+
+		$userResponsavel = App\Usuario::find($idresponsavel);
+		$assunto = "Nova Tarefa Criada";
+		$corpo = "<h1>Nova tarefa criada</h1><br>
+					<p>
+						Titulo da tarefa: ". $tarefa->titulo ."<br>
+						Descrição: ".$tarefa->descricao." <br>
+						Data da limite entrega: ".$tarefa->data_limite." <br>
+						Criador: ".$tarefa->criador()."
+					</p>
+		";
+		
+		Email::enviar($userResponsavel->email, $assunto,  $corpo);
 
 		return redirect('/tarefas');
 	}
