@@ -11,7 +11,7 @@ class UsuariosController extends Controller
 {
     public function index()
     {
-
+        
         if (Auth::user()->tipo_usuario['titulo'] == "Diretor Executivo")
             $usuarios = Usuario::get();
         else if (Auth::user()->tipo_usuario['titulo'] == "Diretor")

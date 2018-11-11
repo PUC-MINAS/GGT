@@ -122,7 +122,7 @@
 
 						<ul class="navbar-nav ml-auto">
 
-                            @if(Auth::user()->tipo_usuario()->titulo != "Diretor Executivo")
+                            @if(Auth::user()->tipoUsuario()->titulo != "Diretor Executivo")
                             <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <i class="fas fa-coins icon-fuj"></i>
