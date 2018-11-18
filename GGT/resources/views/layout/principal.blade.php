@@ -247,26 +247,7 @@
 <script src="{{URL::asset('assets/js/light-bootstrap-dashboard.js?v=2.0.1')}}" type="text/javascript"></script>
 
 <!--scripts adicionais -->
-<script>
-    $('#exampleModal').on('show.bs.modal', function (event) {
-  var premio = $(event.relatedTarget)
-  var titulo = premio.data('titulo')
-  var descricao = premio.data('descricao')
-  var valor = premio.data('valor')
-  var data_expirar = premio.data('time')
-  var vagas = premio.data('vagas')
-  var id = premio.data('id')
 
-  var modal = $(this)
-  modal.find('.modal-body #titulo').val(titulo)
-  modal.find('.modal-body #descricao').val(descricao)
-  modal.find('.modal-body #valor').val(valor)
-  modal.find('.modal-body #qtdVagas').val(vagas)
-  modal.find('.modal-body #data_expirar').val(data_expirar)
-  modal.find('.modal-body #id').val(id)
-})
-
-</script>
 @yield('scripts')
 
 </html>

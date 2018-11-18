@@ -34,13 +34,18 @@ Route::post('/tarefas/solicitarCorrecao', "TarefasController@solicitarCorrecao")
 Route::resource('cadastro', 'UsuariosController');
 
 /* Rotas Premiacao */
-Route::get('/premio/diretor', 'PremiacaoController@create');
-Route::get('/premio/trainee', 'PremiacaoController@create');
 Route::get('/premio', 'PremiacaoController@index');
+
 Route::post('premio/criar', 'PremiacaoController@store');
+
 Route::get('/premio/delete/{id}', 'PremiacaoController@delete');
-Route::post('/premio/atualizar', 'PremiacaoController@update');
+
 Route::post('/premio/update', 'PremiacaoController@update');
-Route::get('/premio/regatar', 'PremiacaoController@regatar');
+
+Route::get('/premio/resgatar/{id}', 'PremiacaoController@regatar');
+
+Route::get('/premio/meusPremios/', 'PremiacaoController@meusPremios');
+
+Route::get('/premio/cancelarInscricao/{id}', 'PremiacaoController@cancelar');
 
 Auth::routes();

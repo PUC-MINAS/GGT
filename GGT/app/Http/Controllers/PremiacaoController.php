@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Premios;
 use Illuminate\Http\Request;
-use DB;
 use DateTime;
+use App\Usuario;
+use Auth;
 class PremiacaoController extends Controller
 {
     /**
@@ -16,29 +17,91 @@ class PremiacaoController extends Controller
 
     public function index()
     {
+
+        $user = Auth::user();
+        
         $premios = \App\Premio::all();
-        return view('premiacao.DiretorExecutivo.index')->with('premios',$premios);
+
+        $premiacao = \App\Premiacoes::all();
+
+        if($user->tipoUsuario()->id == 1){
+            
+           return view('premiacao.DiretorExecutivo.index',compact('premios','premiacao'));
+            
+        }
+        return view('premiacao.index', compact('premios','premiacao','user'));
+        
+    }
+
+    public function meusPremios()
+    {
+
+        $user = Auth::user();
+
+        $premios = \App\Premio::all();
+      
+        $premiacao = \App\Premiacoes::all();
+        
+        if($user->tipoUsuario()->id == 1){
+            
+           return view('premiacao.meusPremios',compact('premios','premiacao'));
+            
+        }
+        return view('premiacao.meusPremios', compact('premios','premiacao','user'));
+        
     }
 
     public function regatar($id){
-        
+
         $premio = \App\Premio::find($id);
 
-        $premio->limite_vagas =  $premio->limite_vagas-1;
+        $user = Auth::user();
 
+        if($user->pontos>=$premio->valor){
+            if($premio->limite_vagas>0){
+
+                $user->pontos-=$premio->valor;
+
+                $premio->limite_vagas-=1;
+                $premio->save();
+
+                date_default_timezone_set('America/Sao_Paulo');
+                $data = date('Y-m-d');
+                
+                $premiacoes = new \App\Premiacoes;
+                $premiacoes->user_id= $user->id;
+                $premiacoes->premio_id= $id;
+                $premiacoes->valor_pago= $premio->valor;              
+                $premiacoes->data_resgate= $data;
+
+                $insert = $premiacoes->save();
+               
+                if($insert){
+                    return redirect('/premio');
+                }
+                else{
+                   return 'Não foi possivel inserir';
+                }
+            }
+        }else{
+            //add alerta
+
+            return "Ops está faltando alguns pontos!!!";
+        }
+        
     }
    
     public function store(Request $request)
     {
-        $premiacao = new \App\Premio();
+        $premio = new \App\Premio();
      
-        $premiacao->titulo = $request->input('titulo');
-    	$premiacao->descricao = $request->input('descricao');
-        $premiacao->valor = $request->input('valor');
-        $premiacao->limite_vagas = $request->input('qtdVagas');
+        $premio->titulo = $request->input('titulo');
+    	$premio->descricao = $request->input('descricao');
+        $premio->valor = $request->input('valor');
+        $premio->limite_vagas = $request->input('qtdVagas');
 
-        $premiacao->data_limite = date($request->input('data_expirar'));
-        $insert = $premiacao->save();
+        $premio->data_limite = date($request->input('data_expirar'));
+        $insert = $premio->save();
 
          if($insert){
              return redirect('/premio');
@@ -46,7 +109,6 @@ class PremiacaoController extends Controller
          else{
             return 'Não foi possivel inserir';
          }
-        return $data;
     }
 
     public function show() 
@@ -76,8 +138,49 @@ class PremiacaoController extends Controller
         
     }
 
-    public function delete($id){
+    public function cancelar($id){
+        
         $premio = \App\Premio::find($id);
+
+        $premiacao = \App\Premiacoes::all();
+
+
+
+        $vagas = $premio->limite_vagas;
+
+        $premio->limite_vagas = $vagas+1;
+
+        $premio->save();
+
+        // foreach($premiacao as $p){
+        //     if($p->premio_id == $premio->id){
+            
+                
+                
+        //     }
+        // }
+        
+
+        $premio->delete();
+
+        return redirect('/premio');
+    }
+
+    public function delete($id){
+        
+        $premiacao = \App\Premiacoes::all();
+
+        $premio = \App\Premio::find($id);
+
+        foreach($premiacao as $p){
+            if($p->premio_id == $premio->id){
+
+                $user = \App\Usuario::find($p->user_id);
+                $user->pontos += $premio->valor;
+                
+                $p->user_id=null;
+            }
+        }
         $premio->delete();
         return redirect('/premio');
     }

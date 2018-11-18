@@ -1,8 +1,7 @@
-@extends('index')
+@extends('layout.principal')
 @section('title', 'Premiação')
 
 @section('conteudo')
-
 	<nav aria-label="breadcrumb">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
@@ -32,13 +31,15 @@
                                 <td ><p>{{$p->descricao}}</p></td>
                                 <td >{{$p->valor}}</td>
                                 <td >{{$p->data_limite}}</td>
-                                <td ><button class="btn btn-primary" href="/premio/regatar">Regatar</button></td>
                             </tr>
                         </thead>
                     @endforeach
                 </tbody>
             </table>
         </div>
+		@else
+		<p>Não existe premios disponiveis</p>
 	@endif
-		
+
+	
 @endsection

@@ -17,8 +17,8 @@ class CreatePremiacoesTable extends Migration
             $table->date("data_resgate");
             $table->integer("valor_pago");
             $table->integer('premio_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            
+            $table->integer('user_id')->unsigned(); 
+            $table->softDeletes();   
         });
     }
 
