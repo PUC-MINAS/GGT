@@ -11,10 +11,10 @@ class UsuariosController extends Controller
 {
     public function index()
     {
-        
-        if (Auth::user()->tipo_usuario['titulo'] == "Diretor Executivo")
+
+        if (Auth::user()->tipoUsuario()->titulo == "Diretor Executivo")
             $usuarios = Usuario::get();
-        else if (Auth::user()->tipo_usuario['titulo'] == "Diretor")
+        else if (Auth::user()->tipoUsuario()->titulo == "Diretor")
             $usuarios = Usuario::where('setores_id', Auth::user()->setores_id)->get();
         else
             $usuarios = Usuario::where('id', Auth::user()->id)->get();
@@ -48,7 +48,7 @@ class UsuariosController extends Controller
     public function edit($id)
     {
         $usuario = Usuario::findOrFail($id);
-        if (Auth::user()->tipo_usuario['titulo'] == "Diretor Executivo")
+        if (Auth::user()->tipoUsuario()->titulo == "Diretor Executivo")
             return view('cadastro.DiretorExecutivo.alterar',compact('usuario'));
         else
             return view ('cadastro.alterar', compact('usuario'));
@@ -60,7 +60,7 @@ class UsuariosController extends Controller
 		$usuario->nome = $request->input('nome-completo');
         $usuario->email = $request->input('email');
 
-        if (Auth::user()->tipo_usuario['titulo'] == "Diretor Executivo"){
+        if (Auth::user()->tipoUsuario()->titulo == "Diretor Executivo"){
             $usuario->tipos_usuarios_id = $request->input('cargo');
             $usuario->setores_id = $request->input('diretoria');
         }
