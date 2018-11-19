@@ -37,36 +37,17 @@
 					<input type="date" name="data_limite" id="data_limite" class="form-control">
 				</div>
 
-				
-				<div class="form-group">
-					<label>Setor</label>
-					<select class="form-control" name="setor" id="setor">[
-						<option></option>
-						<option value="1">Setor1</option>
-						<option value="2">Setor2</option>
-						<option value="3">Setor3</option>
-						<option value="4">Setor4</option>
-						<option value="5">Setor5</option>
-					</select>
-				</div>
 				<div class="form-group">
 					<label>Responsável pela tarefa</label>
 					<select class="form-control" name="responsavel" id="responsavel">
 						<option></option>
-						<option value="1">Subordinado1</option>
-						<option value="2">Subordinado2</option>
-						<option value="3">Subordinado3</option>
-						<option value="4">Subordinado4</option>
-						<option value="5">Subordinado5</option>
+						@foreach($user->subordinados() as $s)
+							<option value="{{$s->id}}">{{$s->nome}}</option>
+						@endforeach
+						
 					</select>
 				</div>
-				<div class="form-check">
-					<label class="form-check-label">
-						<input type="checkbox" class="form-check-input" name="todos" id="checkTodos">
-						<span class="form-check-sign"></span>
-						Selecionar todos
-					</label>
-				</div>
+				
 				<button type="submit" class="btn btn-success btn-fill">Criar</button>
 				<a href="{{url('tarefas')}}" class="btn btn-danger btn-fill">Cancelar</a>
 			</form>
@@ -86,10 +67,10 @@
 
 
 
-	$("#checkTodos").click(function	() {
-		console.log('clicado');
-		if ($("#checkTodos").prop('checked') == true) $("#responsavel").attr("disabled", "disabled");
-		else $("#responsavel").removeAttr("disabled");
-	});
+	// $("#checkTodos").click(function	() {
+	// 	console.log('clicado');
+	// 	if ($("#checkTodos").prop('checked') == true) $("#responsavel").attr("disabled", "disabled");
+	// 	else $("#responsavel").removeAttr("disabled");
+	// });
 </script>
 @endsection

@@ -17,10 +17,13 @@ class CreateTarefasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->mediumText('descricao');
+            $table->date('data_limite');
+            $table->date('data_entrega')->nullable();            
             $table->integer('recompensa');
-            $table->dateTime('data_limite');
-            $table->dateTime('data_entregue')->nullable();
-            $table->timestamps();
+            $table->integer('users_id_criador')->unsigned();
+            $table->integer('users_id_responsavel')->unsigned();
+            $table->integer('status_tarefas_id')->unsigned();
+            
         });
     }
 

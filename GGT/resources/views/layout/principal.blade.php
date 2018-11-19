@@ -10,13 +10,30 @@
 	<!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- CSS Files -->
     <!--<link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />-->
 
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{URL::asset('assets/css/light-bootstrap-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
-    
+    <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}">
+
+    <style>
+        div.sidebar-wrapper div.logo a.simple-text{
+            font-size: 40px;
+            font-weight: 900;
+        }
+
+        .navbar .navbar-nav .nav-item .nav-link .icon-fuj{
+            line-height: 18px;
+        }
+
+        .fuj{
+            margin-left: 15px;
+        }
+    </style>
+
 </head>
 <body>
 	<div class="wrapper">
@@ -28,61 +45,38 @@
     -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        GGT
+                    <a href="" class="simple-text">
+                        FUJ
                     </a>
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index">
-                            <i class="nc-icon nc-chart-pie-35"></i>
+                        <a class="nav-link" href="{{url('/')}}">
+                            <i class="fas fa-home"></i>
                             <p>Home</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{url('tarefas')}}">
-                            <i class="nc-icon nc-notes"></i>
+                            <i class="fas fa-clipboard"></i>
                             <p>Tarefas</p>
                         </a>
                     </li>
-                    
-                    <!--
+
                     <li>
-                        <a class="nav-link" href="./table.html">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Table List</p>
+                        <a class="nav-link" href="{{url('cadastro')}}">
+                            <i class="fas fa-users"></i>
+                            <p>Usuários</p>
                         </a>
                     </li>
+
                     <li>
-                        <a class="nav-link" href="./typography.html">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
+                        <a class="nav-link" href="{{url('premio')}}">
+                            <i class="fas fa-trophy"></i>
+                            <p>Premios</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./icons.html">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./maps.html">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./notifications.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>-->
-                    <!--<li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>-->
+
                 </ul>
             </div>
         </div>
@@ -124,13 +118,48 @@
                                     <span class="d-lg-block">&nbsp;Search</span>
                                 </a>
                             </li>-->
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
+						</ul>
+
+						<ul class="navbar-nav ml-auto">
+
+                            @if(Auth::user()->tipoUsuario()->titulo != "Diretor Executivo")
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Perfil</span>
+                                <a href="" class="nav-link">
+                                    <i class="fas fa-coins icon-fuj"></i>
+                                    <span class="fuj">{{Auth::user()->pontos}}</span>
+                                    
+                                </a>
+                                
+                            </li>
+                            @endif
+							@guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">
+                                    <span class="no-icon">Login</span>
                                 </a>
                             </li>
+
+							@else
+                            <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->nome }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                            </form>
+                                    </div>
+                            </li>
+							@endguest
+						</ul>
+
                             <!--<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="no-icon">Configurações</span>
@@ -144,20 +173,17 @@
                                     <a class="dropdown-item" href="#">Separated link</a>
                                 </div>
                             </li>-->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Sair</span>
-                                </a>
-                            </li>
-                        </ul>
+
+
+
                     </div>
                 </div>
             </nav>
             <!-- End Navbar -->
             <div class="content">
-                
+
                     @yield('conteudo')
-                                                
+
             </div>
             <footer class="footer">
                 <div class="container">
@@ -169,8 +195,8 @@
                                     Home
                                 </a>
                             </li>
-                            
-                            
+
+
                             <li>
                                 <a href="#">
                                     Company
@@ -221,6 +247,7 @@
 <script src="{{URL::asset('assets/js/light-bootstrap-dashboard.js?v=2.0.1')}}" type="text/javascript"></script>
 
 <!--scripts adicionais -->
+
 @yield('scripts')
 
 </html>
