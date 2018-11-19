@@ -48,15 +48,11 @@ class TarefasController extends Controller
 	public function detalhes($id){
 		$tarefa = Tarefa::find($id);
 
-		//dd($tarefa->atrasada());
-
-		//dd($tarefa->statusTarefa());
-
-		if (Auth::user()->tipoUsuario() == 1)
+		if (Auth::user()->tipoUsuario()->titulo == "Diretor Executivo")
 			return view('tarefas.DiretorExecutivo.detalhes')->with('tarefa', $tarefa);
-		else if (Auth::user()->tipoUsuario() == 2)
+		else if (Auth::user()->tipoUsuario()->titulo == "Diretor")
 			return view('tarefas.Diretor.detalhes')->with('tarefa', $tarefa);
-		else if (Auth::user()->tipoUsuario() == 3)
+		else if (Auth::user()->tipoUsuario()->titulo == "Trainee")
 			return view('tarefas.Trainee.detalhes')->with('tarefa', $tarefa);
 	}
 
