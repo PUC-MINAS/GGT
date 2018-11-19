@@ -20,10 +20,6 @@ class TarefasController extends Controller
     public function index()
     {
 		$tarefas = Tarefa::all();
-		//Email::enviar();
-		//dd($tarefas);
-
-		//Email::enviar("ravi.g.assis@gmail.com", "Assunto Teste", "Corpo teste");
 
     	return view('tarefas.DiretorExecutivo.index')->with('tarefas', $tarefas);
     }

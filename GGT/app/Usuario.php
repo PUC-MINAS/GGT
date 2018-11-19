@@ -47,4 +47,8 @@ class Usuario extends Authenticatable
         return $this->belongsToMany('App\Usuario', 'hierarquias', 'users_id_subordinado', 'users_id_superior')->get();
     }
 
+    public function premiacoes(){
+        return $this->hasMany('App\Premiacoes','user_id')->get();
+    }
+
 }

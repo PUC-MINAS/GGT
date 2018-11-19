@@ -57,13 +57,15 @@ class PremiacaoController extends Controller
 
         $user = Auth::user();
 
-        if($user->pontos>=$premio->valor){
+        if($user->pontos >= $premio->valor){
             if($premio->limite_vagas>0){
 
-                $user->pontos-=$premio->valor;
+                $user->pontos -= $premio->valor;
 
                 $premio->limite_vagas-=1;
+
                 $premio->save();
+                $user->save(); //correção - pontos decrementados não estavam sendo persistidos
 
                 date_default_timezone_set('America/Sao_Paulo');
                 $data = date('Y-m-d');
@@ -140,37 +142,30 @@ class PremiacaoController extends Controller
 
     public function cancelar($id){
         
-        $premio = \App\Premio::find($id);
+        $user = Auth::user();        
+        $premiacao = $user->premiacoes()->where('premio_id', $id)->first();
+        $premio = $premiacao->premio();
 
-        $premiacao = \App\Premiacoes::all();
-
-
+        $user->pontos += $premio->valor;
+        $user->save();
 
         $vagas = $premio->limite_vagas;
-
         $premio->limite_vagas = $vagas+1;
-
         $premio->save();
 
-        // foreach($premiacao as $p){
-        //     if($p->premio_id == $premio->id){
-            
-                
-                
-        //     }
-        // }
-        
-
-        $premio->delete();
+        $premiacao->deletar();
 
         return redirect('/premio');
     }
 
     public function delete($id){
-        
-        $premiacao = \App\Premiacoes::all();
-
         $premio = \App\Premio::find($id);
+        
+        $premiacao = \App\Premiacoes::where('premio_id', $id)->first();
+
+        dd($premiacao);
+
+        
 
         foreach($premiacao as $p){
             if($p->premio_id == $premio->id){
