@@ -13,7 +13,7 @@
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
 	    <li class="breadcrumb-item active" aria-current="page">Tarefas</li>
-	    
+
 	  </ol>
 	</nav>
 
@@ -26,15 +26,15 @@
 
 		<div class="row">
 			<div class="col">
-			<div class="card">	
+			<div class="card">
 			<div class="card-body">
-			
-					
+
+
 				<div class="table-responsive table-full-width">
 					<table class="table table-hover">
 						<thead>
 							<tr>
-									
+
 								<th scope="col">Título</th>
 								<th scope="col">Descrição</th>
 								<th scope="col">Data para entrega</th>
@@ -42,12 +42,12 @@
 								<th scope="col">Criador</th>
 								<th scope="col">Responsável</th>
 								<!--<th></th>-->
-								
+
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($tarefas as $t)
-								
+
 								<tr>
 									<td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->titulo}}</a></td>
 									<td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->descricao}}</a></td>
@@ -71,7 +71,7 @@
 										</form>
 									</td>-->
 								</tr>
-								
+
 							@endforeach
 						</tbody>
 					</table>
@@ -81,10 +81,10 @@
 			</div>
 		</div>
 	</div>
-	
 
-		
 
-		
+
+
+
 
 @endsection

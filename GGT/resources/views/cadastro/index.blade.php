@@ -17,13 +17,16 @@
 
     <div class="table-responsive table-full-width">
         <table class="table table-hover">
+            <thead>
         <br><tr>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Cargo</th>
-                <th>Diretoria</th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Diretoria</th>
             </tr>
+            </thead>
             @forelse ( $usuarios as $usuario )
+                <tbody>
                 <tr>
                     <td>{{ $usuario->nome }}</td>
                     <td>{{ $usuario->email}}</td>
@@ -44,11 +47,12 @@
                             <form action="{{ route('cadastro.destroy', $usuario->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
                             </form>
                         </td>
                     @endif
                 </tr>
+                </tbody>
             @empty
             @endforelse
         </table>

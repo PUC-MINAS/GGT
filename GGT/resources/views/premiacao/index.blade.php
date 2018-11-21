@@ -5,18 +5,18 @@
 	<nav aria-label="breadcrumb">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
-       		<li class="breadcrumb-item active" aria-current="page">Premiações</li>
+       	<li class="breadcrumb-item active" aria-current="page">Prêmios</li>
 	  </ol>
 	</nav>
-	 
+
     <a href="/premio/meusPremios/" class="btn btn-primary btn-fill">Meus Premios</a>
 
     @if($premios != null)
-        <div class="table-responsive-xl">
+        <div class="table-responsive table-full-width">
             <table class="table table-hover">
                 <thead>
-                    <tr>
-                        <th></th>         
+                <br><tr>
+                        <th></th>
                         <th scope="col">Vagas</th>
                         <th scope="col">Titulo</th>
                         <th scope="col">Descrição</th>
@@ -29,14 +29,14 @@
                         @if ($p->limite_vagas > 0)
                          <thead>
                               <tr>
-                                  <th scope="row"><td >{{$p->limite_vagas}}</td> </th> 
-                                  <td >{{$p->titulo}}</td> 
-                                  <td ><p>{{$p->descricao}}</p></td>
+                                  <th scope="row"><td >{{$p->limite_vagas}}</td> </th>
+                                  <td >{{$p->titulo}}</td>
+                                  <td >{{$p->descricao}}</td>
                                   <td >{{$p->valor}}</td>
                                   <td >{{$p->data_limite}}</td>
-                                  <td><a href="/premio/resgatar/{{$p->id}}" class="btn btn-primary btn-fill">Resgatar</a></td>
+                                  <td><a href="/premio/resgatar/{{$p->id}}" class="btn btn-info">Resgatar</a></td>
                               </tr>
-                          </thead>	    
+                          </thead>
                         @endif
                     @endforeach
                 </tbody>
@@ -63,7 +63,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th></th>         
+                            <th></th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Descrição</th>
                             <th scope="col">Valor</th>
@@ -77,13 +77,13 @@
                                 @if($p->id == $prem->premio_id)
                                     <thead>
                                         <tr>
-                                            <th scope="row"><td >{{$p->titulo}}</td></th> 
+                                            <th scope="row"><td >{{$p->titulo}}</td></th>
                                             <td ><p>{{$p->descricao}}</p></td>
                                             <td >{{$p->valor}}</td>
                                             <td >{{$p->data_limite}}</td>
                                             <td><a href="/premio/cancelarInscricao/{{$p->id}}" class="btn btn-primary btn-fill">Cancelar inscrição</a></td>
                                         </tr>
-                                    </thead>	    
+                                    </thead>
                                 @endif
                             @endforeach
                         @endif
@@ -94,8 +94,8 @@
             @else
                 <!--alerta-->
                 <p>Não existe premios disponiveis</p>
-            @endif           
-            
+            @endif
+
         </div>
         <div class="modal-footer">
         </div>
@@ -107,13 +107,13 @@
 
  @section('scripts')
       <script>
-            
+
             $('#modalEditar').on('show.bs.modal', function (event) {
             var premio = $(event.relatedTarget)
-            var user = premio.data    
-            
+            var user = premio.data
+
       })
       </script>
   @endsection
-	
+
 @endsection
