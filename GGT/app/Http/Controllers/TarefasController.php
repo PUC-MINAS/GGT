@@ -111,6 +111,16 @@ class TarefasController extends Controller
 		return redirect('/');
 	}
 
+	public function entregar(Request $request) {
+	
+		$tarefa = Tarefa::findOrFail($request->input('id'));
+		$tarefa->entregar();
+		$tarefa->data_entrega =  new \DateTime();
+		$tarefa->save();
+		return redirect('/tarefas');
+	}
+
+
   public function solicitarCorrecao(Request $request) {
 
 		$tarefa = Tarefa::find($request->input('id'));

@@ -28,6 +28,11 @@ class Tarefa extends Model
         $this->status_tarefas_id = $status->id;
     }
 
+    public function entregar(){
+        $status = StatusTarefa::where('titulo', 'Entregue')->first();
+        $this->status_tarefas_id = $status->id;
+    }
+
     public function ativa() {
         return $this->status_tarefas_id == 1;
     }

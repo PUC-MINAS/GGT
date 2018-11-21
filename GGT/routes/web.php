@@ -19,15 +19,27 @@ Route::get('/home', 'HomeController@index')->middleware('auth');
 
 /* Rotas Tarefas*/
 Route::get('/tarefas', 'TarefasController@index');
+
 Route::get('/tarefas/criar', 'TarefasController@create');
+
 Route::get('/tarefas/alterar/{id}', "TarefasController@alterar");
+
 Route::get('/tarefas/detalhes/{id}', "TarefasController@detalhes");
+
 Route::get('/tarefas/avaliacao/{id}', "TarefasController@avaliacao");
+
 Route::post('/tarefas/deletar', "TarefasController@deletar");
+
 Route::post('/tarefas/desativar', 'TarefasController@desativar');
+
+Route::post('/tarefas/entregar', 'TarefasController@entregar');
+
 Route::post('/tarefas/store', 'TarefasController@store');
+
 Route::post('/tarefas/update', 'TarefasController@update');
+
 Route::post('/tarefas/avaliar', "TarefasController@avaliar");
+
 Route::post('/tarefas/solicitarCorrecao', "TarefasController@solicitarCorrecao");
 
 /* Rotas Cadastro */
