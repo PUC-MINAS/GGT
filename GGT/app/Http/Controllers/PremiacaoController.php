@@ -24,9 +24,11 @@ class PremiacaoController extends Controller
 
         $premiacao = \App\Premiacoes::all();
 
-        if($user->tipoUsuario()->id == 1){
+       // dd($user->tipoUsuario()->titulo);
+
+        if($user->tipoUsuario()->titulo == "Diretor Executivo"){
             
-           return view('premiacao.DiretorExecutivo.index',compact('premios','premiacao'));
+           return view('premiacao.DiretorExecutivo.index',compact('premios','premiacao', 'user'));
             
         }
         return view('premiacao.index', compact('premios','premiacao','user'));
@@ -161,21 +163,16 @@ class PremiacaoController extends Controller
     public function delete($id){
         $premio = \App\Premio::find($id);
         
-        $premiacao = \App\Premiacoes::where('premio_id', $id)->first();
-
-        dd($premiacao);
-
+        $premiacoes = \App\Premiacoes::where('premio_id', $id)->get();
         
 
-        foreach($premiacao as $p){
-            if($p->premio_id == $premio->id){
-
-                $user = \App\Usuario::find($p->user_id);
-                $user->pontos += $premio->valor;
-                
-                $p->user_id=null;
-            }
+        foreach($premiacoes as $p){
+            $user = \App\Usuario::find($p->user_id);
+            $user->pontos += $premio->valor;
+            $user->save();
+            $p->deletar();            
         }
+
         $premio->delete();
         return redirect('/premio');
     }
