@@ -15,6 +15,7 @@
             <tr>
               <!-- <th scope="col">Posição</th> -->
               <th scope="col">Nome</th>
+              <th scope="col">Tarefas Pendentes</th>
               <th scope="col">Tarefas Realizadas</th>
             </tr>
           </thead>
@@ -23,6 +24,7 @@
             @foreach($subordinados as $subordinado)
                   <tr>
                     <td>{{$subordinado->nome}}</td>
+                    <td>{{$tarefasPendentes["$subordinado->id"]}}</td>
                     <td>{{$tarefasRealizadas["$subordinado->id"]}}</td>
                   </tr>
             @endforeach
