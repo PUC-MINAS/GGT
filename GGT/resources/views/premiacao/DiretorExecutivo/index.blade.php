@@ -3,13 +3,20 @@
 
 @section('conteudo')
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Criar premio</button>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Prêmios</li>
+    </ol>
+</nav>
+
+<button type="button" class="btn btn-primary btn-fill" data-toggle="modal" data-target="#exampleModalCenter">Criar premio</button>
 
 @if($premios != null)
-      <div class="table-responsive-xl">
+      <div class="table-responsive table-full-width">
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                <br><tr>
                         <th></th>
                         <th scope="col">Status</th>
                         <th scope="col">Vagas</th>
@@ -20,35 +27,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                          
-                       
+
+
                     @foreach($premios as $p)
-                        
-                        <?php 
+
+                        <?php
                           $disponivel;
                           date_default_timezone_set('America/Sao_Paulo');
                           $data = date('Y-m-d');
 
-                          if ($p->limite_vagas > 0) { 
+                          if ($p->limite_vagas > 0) {
                              $disponivel = true;
-                          } else { 
-                            $disponivel = false ; 
+                          } else {
+                            $disponivel = false ;
                           }
                         ?>
-                       @if($disponivel)             
+                       @if($disponivel)
                          <thead>
                               <tr>
                                   <th scope="row"><td >Premios disponiveis</td></th>
-                                  <td >{{$p->limite_vagas}}</td> 
-                                  <td >{{$p->titulo}}</td> 
-                                  <td ><p>{{$p->descricao}}</p></td>
+                                  <td >{{$p->limite_vagas}}</td>
+                                  <td >{{$p->titulo}}</td>
+                                  <td >{{$p->descricao}}</td>
                                   <td >{{$p->valor}}</td>
                                   <td >{{$p->data_limite}}</td>
                                   <td>
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar" data-titulo="{{$p->titulo}}" data-id="{{$p->id}}"
+                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalEditar" data-titulo="{{$p->titulo}}" data-id="{{$p->id}}"
                                     data-descricao="{{$p->descricao}}" data-valor ="{{$p->valor}}" data-vagas="{{$p->limite_vagas}}" data-time="{{$p->data_limite}}" >Editar</button>
                                   </td>
-                                <td><a href="/premio/delete/{{$p->id}}" class="btn btn-primary btn-fill">Excluir</a></td>
+                                <td><a href="/premio/delete/{{$p->id}}" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                               </tr>
                           </thead>
                           @else
@@ -56,7 +63,7 @@
                               <tr>
                                 <th scope="row"><td >Premios indisponiveis</td></th>
                                 <td >{{$p->limite_vagas}}</td>
-                                <td >{{$p->titulo}}</td> 
+                                <td >{{$p->titulo}}</td>
                                 <td ><p>{{$p->descricao}}</p></td>
                                 <td >{{$p->valor}}</td>
                                 <td >{{$p->data_limite}}</td>
@@ -86,8 +93,8 @@
         </button>
       </div>
       <div class="modal-body">
-      
-      
+
+
          <form method="post" action="{{url('/premio/criar')}}" onSubmit="validar()">
              <div class="form-group">
             	<label for="nome">Título</label>
@@ -111,12 +118,12 @@
 				<label>Data Limite de inscrição</label>
 				<input type="date" name="data_expirar" id="data_expirar" class="form-control" placeholder="AAAA-MM-DD" value="" required>
 			</div>
-					
+
 			<button type="submit" class="btn btn-success btn-fill">Salvar</button> <input type="submit">
 			<a href="" class="btn btn-danger btn-fill">Cancelar</a>
-     
+
          </form>
-		
+
       </div>
       <div class="modal-footer">
       </div>
@@ -133,7 +140,7 @@
         <h4 class="modal-title" id="premio->titulo">Editar premio</h4>
       </div>
       <div class="modal-body">
-       
+
       <form method="post" action="{{url('/premio/update')}}">
              <div class="form-group">
             	<label for="nome">Título</label>
@@ -158,11 +165,11 @@
 				<label>Data Limite de inscrição</label>
 				<input type="date" name="data_expirar" id="data_expirar" class="form-control" placeholder="AAAA-MM-DD" value="">
 			</div>
-					
+
 			<button type="submit" class="btn btn-success btn-fill">Salvar</button>
-      
+
 			<a href="" class="btn btn-danger btn-fill">Cancelar</a>
-     
+
          </form>
       </div>
     </div>
@@ -195,7 +202,7 @@
         now = new Date
 
         data = document.getElementById("data_expirar").value.split("-");
-        
+
         if(data[0]<now.getFullYear()){
             alert("Data invalida");
             return false;

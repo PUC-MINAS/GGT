@@ -77,6 +77,17 @@
                         </a>
                     </li>
 
+										@if(Auth::user()->tipoUsuario()->titulo == "Diretor Executivo")
+
+										<li>
+                        <a class="nav-link" href="{{url('leaderboard')}}">
+														<i class="fas fa-align-left"></i>
+                            <p>Tabela Produtividade</p>
+                        </a>
+                    </li>
+
+										@endif
+
                 </ul>
             </div>
         </div>
@@ -127,9 +138,9 @@
                                 <a href="" class="nav-link">
                                     <i class="fas fa-coins icon-fuj"></i>
                                     <span class="fuj">{{Auth::user()->pontos}}</span>
-                                    
+
                                 </a>
-                                
+
                             </li>
                             @endif
 							@guest
