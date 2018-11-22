@@ -81,7 +81,7 @@ class TarefasController extends Controller
 
 		$tarefa->save();
 
-		$userResponsavel = App\Usuario::find($idresponsavel);
+		$userResponsavel = Usuario::find($idresponsavel);
 		$assunto = "Nova Tarefa Criada";
 		$corpo = "<h1>Nova tarefa criada</h1><br>
 					<p>
