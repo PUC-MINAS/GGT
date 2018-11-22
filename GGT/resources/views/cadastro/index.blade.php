@@ -23,6 +23,7 @@
                 <th scope="col">E-mail</th>
                 <th scope="col">Cargo</th>
                 <th scope="col">Diretoria</th>
+                <th>&nbsp;&nbsp;&nbsp;<i class="fas fa-coins icon-fuj"></i></th>
             </tr>
             </thead>
             @forelse ( $usuarios as $usuario )
@@ -32,6 +33,9 @@
                     <td>{{ $usuario->email}}</td>
                     <td>{{ $usuario->tipoUsuario()->titulo}}</td>
                     <td>{{ $usuario->setor['titulo']}}</td>
+                    @if ($usuario->tipoUsuario()->titulo != "Diretor Executivo" )
+                        <td><span class="fuj">{{$usuario->pontos}}</span></td>
+                    @endif
 
                     @if ((Auth::user()->tipoUsuario()->titulo == "Diretor Executivo"
                        || Auth::user()->id == $usuario->id)
