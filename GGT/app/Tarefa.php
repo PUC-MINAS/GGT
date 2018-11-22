@@ -19,6 +19,11 @@ class Tarefa extends Model
         return Usuario::find($this->users_id_responsavel);
     }
 
+    public function entregar(){
+       $status = StatusTarefa::where('titulo', 'Entregue')->first();
+       $this->status_tarefas_id = $status->id;
+    }
+
     public function statusTarefa(){
         return StatusTarefa::find($this->status_tarefas_id);
     }

@@ -52,7 +52,14 @@
 
             
             @if($tarefa->ativa() && !$tarefa->atrasada())
-                <a href="" class="btn btn-success btn-fill">Entregar</a>
+
+                <form action="{{url('/tarefas/entregar/'.$tarefa->id)}}" method="post" class="formInline">
+                    <input type="hidden" name="id" value="{{$tarefa->id}}">
+                    <button class="btn btn-default btn-fill">
+                        Entregar Tarefa
+                    </button>
+                </form>
+            </form>
             @else
                 <a class="btn btn-success btn-fill btn-disabled" disabled alt="Tarefa em Atraso">Entregar</a>
             @endif

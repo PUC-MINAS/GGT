@@ -60,6 +60,15 @@ class TarefasController extends Controller
 			return view('tarefas.Trainee.detalhes')->with('tarefa', $tarefa);
 	}
 
+	public function entregar(Request $request) {
+	
+		$tarefa = Tarefa::findOrFail($request->input('id'));
+		$tarefa->entregar();
+		$tarefa->data_entrega = new \DateTime();
+		$tarefa->save();
+		return redirect('/tarefas');
+	}
+
   public function avaliacao($id){
 		$tarefa = Tarefa::find($id);
 
