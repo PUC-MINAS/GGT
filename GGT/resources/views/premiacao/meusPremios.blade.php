@@ -7,16 +7,16 @@
 	<nav aria-label="breadcrumb">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="{{url('index')}}">Home</a></li>
-       		<li class="breadcrumb-item active" aria-current="page">Premiações</li>
+       	<li class="breadcrumb-item active" aria-current="page">Prêmios</li>
 	  </ol>
 	</nav>
 
                 @if($premiacao != null)
-                <div class="table-responsive-xl">
+                <div class="table-responsive table-full-width">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
-                            <th></th>         
+                    <br><tr>
+                            <th></th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Descrição</th>
                             <th scope="col">Valor</th>
@@ -30,13 +30,13 @@
                                 @if($p->id == $prem->premio_id)
                                     <thead>
                                         <tr>
-                                            <th scope="row"><td >{{$p->titulo}}</td></th> 
-                                            <td ><p>{{$p->descricao}}</p></td>
+                                            <th scope="row"><td >{{$p->titulo}}</td></th>
+                                            <td >{{$p->descricao}}</td>
                                             <td >{{$p->valor}}</td>
                                             <td >{{$p->data_limite}}</td>
-                                            <td><a href="/premio/cancelarInscricao/{{$p->id}}" class="btn btn-primary btn-fill">Cancelar inscrição</a></td>
+                                            <td><a href="/premio/cancelarInscricao/{{$p->id}}" class="btn btn-danger">Cancelar inscrição</a></td>
                                         </tr>
-                                    </thead>	    
+                                    </thead>
                                 @endif
                             @endforeach
                         @endif
@@ -47,7 +47,7 @@
             @else
                 <!--alerta-->
                 <p>Não existe premios disponiveis</p>
-            @endif           
+            @endif
 
 
 @endsection

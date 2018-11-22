@@ -48,4 +48,7 @@ Route::get('/premio/meusPremios/', 'PremiacaoController@meusPremios');
 
 Route::get('/premio/cancelarInscricao/{id}', 'PremiacaoController@cancelar');
 
+/* Rotas Leaderboard */
+Route::get('/leaderboard', 'LeaderboardController@index');
+
 Auth::routes();

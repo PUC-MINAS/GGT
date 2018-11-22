@@ -59,9 +59,9 @@ class TarefasController extends Controller
   public function avaliacao($id){
 		$tarefa = Tarefa::find($id);
 
-		if (Auth::user()->tipoUsuario() == 1)
+		if (Auth::user()->tipoUsuario()->titulo == "Diretor Executivo")
 			return view('tarefas.DiretorExecutivo.avaliacao')->with('tarefa', $tarefa);
-		else if (Auth::user()->tipoUsuario() == 2)
+		else if (Auth::user()->tipoUsuario()->titulo == "Diretor")
 			return view('tarefas.Diretor.avaliacao')->with('tarefa', $tarefa);
 	}
 
@@ -91,7 +91,7 @@ class TarefasController extends Controller
 						Criador: ".$tarefa->criador()."
 					</p>
 		";
-		
+
 		Email::enviar($userResponsavel->email, $assunto,  $corpo);
 
 		return redirect('/tarefas');
