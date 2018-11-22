@@ -24,8 +24,8 @@
                                 <tbody>
                                     @foreach($user->tarefasAFazer() as $t)
                                     <tr>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->titulo}}</a></td>
-                                        <td><a href="{{url('/tarefas/detalhes/'.$t->id)}}">{{$t->data_limite}}</a></td>
+                                        <td><a href="{{url('/tarefas/entregarTarefa/'.$t->id)}}">{{$t->titulo}}</a></td>
+                                        <td><a href="{{url('/tarefas/entregarTarefa/'.$t->id)}}">{{$t->data_limite}}</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

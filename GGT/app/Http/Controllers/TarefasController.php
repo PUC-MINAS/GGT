@@ -22,7 +22,14 @@ class TarefasController extends Controller
 		$tarefas = Tarefa::all();
 
     	return view('tarefas.DiretorExecutivo.index')->with('tarefas', $tarefas);
-    }
+	}
+	
+	public function entregarTarefa($id){
+		$tarefa = Tarefa::find($id);
+		 if (Auth::user()->tipoUsuario()->titulo == "Diretor")
+			return view('tarefas.Diretor.entregarTarefa')->with('tarefa', $tarefa);
+		return redirect('/');
+	}
 
     public function create(){
 
