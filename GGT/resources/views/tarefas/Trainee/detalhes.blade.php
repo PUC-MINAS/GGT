@@ -50,8 +50,11 @@
 
             <a href="{{url('/')}}" class="btn btn-primary btn-fill">Voltar</a>
 
+            
             @if($tarefa->ativa() && !$tarefa->atrasada())
                 <a href="" class="btn btn-success btn-fill">Entregar</a>
+            @else
+                <a class="btn btn-success btn-fill btn-disabled" disabled alt="Tarefa em Atraso">Entregar</a>
             @endif
             
         </div>
