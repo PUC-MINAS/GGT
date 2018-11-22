@@ -29,6 +29,20 @@ class LeaderboardController extends Controller
         $tarefasRealizadas[$subordinado->id] = $numTarefas;
     }
 
-    return view('leaderboard.DiretorExecutivo.index')->with('subordinados', $subordinados)->with('tarefasRealizadas', $tarefasRealizadas);
+    $tarefasPendentes = array();
+
+    foreach ($subordinados as  $subordinado) {
+        $numTarefas = 0;
+        foreach ($tarefas as $tarefa) {
+            if($tarefa->status_tarefas_id == 1 && $tarefa->users_id_responsavel == $subordinado->id){
+              $numTarefas++;
+            }
+        }
+        $tarefasPendentes[$subordinado->id] = $numTarefas;
+    }
+
+    return view('leaderboard.DiretorExecutivo.index')->with('subordinados', $subordinados)
+                                                     ->with('tarefasRealizadas', $tarefasRealizadas)
+                                                     ->with('tarefasPendentes', $tarefasPendentes);
   }
 }
