@@ -50,8 +50,12 @@ class TarefasController extends Controller
 
 		if (Auth::user()->tipoUsuario()->titulo == "Diretor Executivo")
 			return view('tarefas.DiretorExecutivo.detalhes')->with('tarefa', $tarefa);
-		else if (Auth::user()->tipoUsuario()->titulo == "Diretor")
-			return view('tarefas.Diretor.detalhes')->with('tarefa', $tarefa);
+		else if (Auth::user()->tipoUsuario()->titulo == "Diretor"){
+			if($tarefa->criador()->id == Auth::user()->id)
+				return view('tarefas.Diretor.detalhes')->with('tarefa', $tarefa);
+			else 
+				return view('tarefas.Trainee.detalhes')->with('tarefa', $tarefa);
+		}			
 		else if (Auth::user()->tipoUsuario()->titulo == "Trainee")
 			return view('tarefas.Trainee.detalhes')->with('tarefa', $tarefa);
 	}
@@ -81,14 +85,14 @@ class TarefasController extends Controller
 
 		$tarefa->save();
 
-		$userResponsavel = App\Usuario::find($idresponsavel);
+		$userResponsavel = Usuario::find($idresponsavel);
 		$assunto = "Nova Tarefa Criada";
 		$corpo = "<h1>Nova tarefa criada</h1><br>
 					<p>
 						Titulo da tarefa: ". $tarefa->titulo ."<br>
 						Descrição: ".$tarefa->descricao." <br>
 						Data da limite entrega: ".$tarefa->data_limite." <br>
-						Criador: ".$tarefa->criador()."
+						Criador: ".$tarefa->criador()->nome."
 					</p>
 		";
 
